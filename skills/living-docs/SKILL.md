@@ -3,16 +3,14 @@ name: living-docs
 description: Capture durable, likely-to-repeat lessons as anti-patterns the same turn as the fix. Use when the user corrects you, the same class of mistake repeats, verify-work finds a gap, docs and code diverge, or when placing new agent rules/skills/launchers.
 metadata:
   author: mattpua
-  version: "1.2.0"
+  version: "1.2.1"
 ---
 
 # living-docs
 
 Keep agent-facing docs alive so the next session does not relearn the same lesson. **Do not wait to be asked** — “update the docs” from the user means this skill already failed.
 
-Formerly called manage-docs in some projects — same job. Invoke by skill name (`living-docs`) however your harness triggers skills.
-
-Harness-agnostic: anti-pattern paths and lint commands live in the **project binding** / standing docs.
+Invoke by skill name (`living-docs`) however your harness triggers skills. Anti-pattern paths and lint commands live in the **project binding** / standing docs.
 
 ## When to write
 

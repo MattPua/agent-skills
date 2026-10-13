@@ -32,7 +32,7 @@ Prove changes with concrete evidence before claiming done. Static checks are pre
 
 ### `living-docs`
 
-Capture likely-to-repeat lessons as anti-patterns the same turn as the fix. Prefer merge over invent; codify mechanical bans in the linter when possible. (Formerly “manage-docs” in some repos.)
+Capture likely-to-repeat lessons as anti-patterns the same turn as the fix. Prefer merge over invent; codify mechanical bans in the linter when possible.
 
 ### `critique-me`
 
