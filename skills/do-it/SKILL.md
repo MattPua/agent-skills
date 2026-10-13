@@ -29,6 +29,7 @@ One entry point. Match the task to a playbook, copy its steps into a todolist **
 | Investigation | Read-only: how/why/are we sure | `playbooks/investigation.md` |
 | Pre-merge | Review (and fix) a diff or PR before merge | `playbooks/pre-merge.md` |
 | Docs lesson | Capture a repeating lesson into agent docs | `playbooks/docs-lesson.md` |
+| Verification harness | No project way to drive/prove the app | `playbooks/verification-harness.md` |
 | Figure it out | No narrower playbook fits; design then run | `playbooks/figure-it-out.md` |
 
 ## Non-negotiables

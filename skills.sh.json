@@ -10,7 +10,13 @@
     {
       "title": "Quality",
       "description": "Prove work and keep agent docs alive.",
-      "skills": ["verify-work", "living-docs", "debug-root-cause"]
+      "skills": [
+        "verify-work",
+        "living-docs",
+        "debug-root-cause",
+        "create-verification-skill",
+        "maintain-verification-skill"
+      ]
     },
     {
       "title": "Review",

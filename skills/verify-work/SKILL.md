@@ -3,7 +3,7 @@ name: verify-work
 description: Prove changes with concrete runtime evidence before claiming done. Use when finishing a task, claiming a fix, shipping UI/API/DB/email/CI work, or when "verified" / "done" / "works" is about to be said without fresh proof.
 metadata:
   author: mattpua
-  version: "1.4.0"
+  version: "1.5.0"
 ---
 
 # verify-work
@@ -14,7 +14,7 @@ Concrete evidence that the change works — not a description of how it should w
 
 1. Ship the ask (behavior works).
 2. Open the project’s acceptance/evidence table if it exists; otherwise use `references/evidence-classes.md` and add missing rows to the project table same turn.
-3. For every applicable row, run the evidence. UI needs live UI plus visual proof in the reply.
+3. For every applicable row, run the evidence. UI needs live UI plus visual proof in the reply. When a project-local `verify-<app>` skill exists, Call the Skill tool with that skill for app/UI drives (feature map recipes beat ad-hoc clicks).
 4. Name what you proved in the reply. Do not imply unverified layers are done.
 5. If you cannot get proof: say so, strengthen the project table same turn, and Call the Skill tool with `"living-docs"` when the miss will repeat.
 
@@ -24,10 +24,12 @@ Concrete evidence that the change works — not a description of how it should w
 
 Do not write gaps off. Prefer documenting the exact evidence steps to run once unblocked over hoping the human will QA.
 
+No scripted way to drive the app → Call the Skill tool with `"create-verification-skill"` (user-invoked; ask or wait for explicit invoke). Map drift on an existing harness → `"maintain-verification-skill"`.
+
 ## Anti-patterns
 
 See `references/anti-patterns.md`.
 
 ## Setup
 
-Copy `templates/acceptance-evidence.md` into standing project docs; fill tools/paths. Optionally add `templates/standing-rule.md.example` as an always-loaded pointer.
+Copy `templates/acceptance-evidence.md` into standing project docs; fill tools/paths. Optionally add `templates/standing-rule.md.example` as an always-loaded pointer. For a full launch/drive/feature-map harness, use **create-verification-skill**.

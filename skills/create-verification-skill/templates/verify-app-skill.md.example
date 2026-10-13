@@ -1,0 +1,46 @@
+---
+name: verify-{{app}}
+description: Drive {{app}} ({{surface}}) to prove user-facing behavior. Use when verifying UI/CLI changes or when verify-work needs a live app path.
+---
+
+# verify-{{app}}
+
+## Launch
+
+{{exact-start-commands}}
+
+Ready when: {{usable-state-signal}}
+
+Teardown: {{how-to-stop}}
+
+## Doctor
+
+{{read-only-health-checks}}
+
+## Drive
+
+Harness: {{harness-name}}
+
+{{recipe-with-real-selectors}}
+
+## Evidence
+
+Store under: {{artifacts-dir}}
+
+{{proof-standards}}
+
+## Cleanup
+
+{{kill-only-what-you-started}}
+
+Evidence path must still exist after cleanup: {{artifacts-dir}}
+
+## Helpers
+
+```sh
+{{helper-invocations}}
+```
+
+## Feature map
+
+See `features/README.md`.

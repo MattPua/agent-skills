@@ -21,6 +21,8 @@ npx skills add MattPua/agent-skills -s verify-work
 npx skills add MattPua/agent-skills -s living-docs
 npx skills add MattPua/agent-skills -s debug-root-cause
 npx skills add MattPua/agent-skills -s do-it
+npx skills add MattPua/agent-skills -s create-verification-skill
+npx skills add MattPua/agent-skills -s maintain-verification-skill
 npx skills add MattPua/agent-skills -s critique-me
 npx skills add MattPua/agent-skills -s adversarial-review
 npx skills add MattPua/agent-skills -s unslop
@@ -47,11 +49,13 @@ Reach these by name (slash / picker). The model will not auto-fire them.
 | Skill | What it does |
 | --- | --- |
 | [`do-it`](skills/do-it/SKILL.md) | Single entry — pick a playbook; leaf skills run as steps |
+| [`create-verification-skill`](skills/create-verification-skill/SKILL.md) | Generate project-local `verify-<app>` harness + feature map |
+| [`maintain-verification-skill`](skills/maintain-verification-skill/SKILL.md) | Keep that harness/map honest (source + live pass) |
 | [`critique-me`](skills/critique-me/SKILL.md) | Pre-merge review and fixer for a diff or PR |
 | [`adversarial-review`](skills/adversarial-review/SKILL.md) | Opposite-model challenge; verdict only, no edits |
 | [`unslop`](skills/unslop/SKILL.md) | Remove AI writing patterns and restore human voice in prose |
 
-Default for nontrivial work: **`/do-it`**. It routes bug-fix / feature / investigation / pre-merge / docs / figure-it-out and calls `verify-work`, `debug-root-cause`, `living-docs`, `critique-me`, etc. for you.
+Default for nontrivial work: **`/do-it`**. It routes bug-fix / feature / investigation / pre-merge / docs / verification-harness / figure-it-out and calls leaf skills for you.
 
 ## Project adoption
 
@@ -63,13 +67,15 @@ Default for nontrivial work: **`/do-it`**. It routes bug-fix / feature / investi
 
 ```
 skills/
-  do-it/              # user — entry / playbooks
-  verify-work/        # model
-  living-docs/        # model
-  debug-root-cause/   # model
-  critique-me/        # user
-  adversarial-review/ # user
-  unslop/             # user
+  do-it/                        # user — entry / playbooks
+  verify-work/                  # model
+  living-docs/                  # model
+  debug-root-cause/             # model
+  create-verification-skill/    # user — generate verify-<app>
+  maintain-verification-skill/  # user — upkeep verify-<app>
+  critique-me/                  # user
+  adversarial-review/           # user
+  unslop/                       # user
 docs/crafting-skills.md
 skills.sh.json
 ```

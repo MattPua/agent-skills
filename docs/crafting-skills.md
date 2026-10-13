@@ -42,6 +42,8 @@ Operative steps name the **Skill tool** and the skill: `Call the Skill tool with
 | `living-docs` | Model | Agents should capture repeating lessons without being asked |
 | `debug-root-cause` | Model | Agents default to symptom patches; force root-cause process |
 | `do-it` | User | Entry router; playbooks Call leaf skills so humans don’t |
+| `create-verification-skill` | User | Generate project `verify-<app>` harness (complements verify-work policy) |
+| `maintain-verification-skill` | User | Upkeep that harness + feature map |
 | `critique-me` | User | Explicit pre-merge review + auto-fix; deep, expensive |
 | `adversarial-review` | User | Opposite-model challenge; review-only (must not merge into critique-me) |
 | `unslop` | User | Explicit prose edit pass |
