@@ -1,0 +1,11 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Quality",
+      "description": "Prove work and keep agent docs alive across projects.",
+      "skills": ["verify-work", "living-docs"]
+    }
+  ]
+}

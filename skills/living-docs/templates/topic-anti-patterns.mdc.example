@@ -1,0 +1,10 @@
+---
+description: Anti-patterns for {{topic}} — class-level don’t/prefer only; strengthen/merge before add
+globs:
+  - "{{glob-pattern}}"
+---
+
+# Anti-patterns · {{Topic title}}
+
+- Don’t {{bad pattern}}; prefer {{good pattern}}
+- Don’t {{another class}}; prefer {{alternative}} · **lint** `{{rule-id}}` when mechanical
