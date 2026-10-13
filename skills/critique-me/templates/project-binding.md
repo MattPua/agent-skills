@@ -2,6 +2,8 @@
 
 Fill this in once per repo. The generic procedure lives in the installed `critique-me` skill.
 
+**Agents must Read this file** (and the skill) before triage — do not rely on a thin agent blurb alone.
+
 ## Paths
 
 | Need | Where |
@@ -15,26 +17,27 @@ Fill this in once per repo. The generic procedure lives in the installed `critiq
 
 ## Skill triage
 
+Only list skills that are **installed** in this repo (or mark `optional — skip if missing`).
+
 | Skill / rule | Load when diff includes… |
 | --- | --- |
 | `living-docs` | Cursor docs triage or Cursor config follow-up triage matched |
 | `{{skill-a}}` | `{{when-a}}` |
-| `{{skill-b}}` | `{{when-b}}` |
 
-## Security / authz checklist (in-process)
+## Security / authz checklist (in-process — always)
 
 - `{{authz-rule-1}}`
 - `{{authz-rule-2}}`
 - `{{authz-rule-3}}`
 
-## Threat model — delegate when
+## Threat model
 
 | Signal | Match when… |
 | --- | --- |
 | `{{threat-signal-1}}` | `{{threat-when-1}}` |
 | `{{threat-signal-2}}` | `{{threat-when-2}}` |
 
-**Delegate to:** `{{security-agent}}`  
+**Delegate to:** `{{security-agent}}` — or **`in-process only`** if that agent/skill is not installed.  
 **Skip when:** docs/copy/style/tests only; refactors with no new entry points.
 
 ## Product completeness — add section when
@@ -55,7 +58,7 @@ Fill this in once per repo. The generic procedure lives in the installed `critiq
 
 Application code under: `{{app-roots}}` (e.g. `apps/**`, `packages/**`, `convex/**`).
 
-## Thin Cursor agent (optional)
+## Thin Cursor agent (required pattern)
 
 ```markdown
 ---
@@ -64,6 +67,10 @@ model: inherit
 description: Review and fix changed code before merge. Follows installed critique-me skill.
 ---
 
-Follow the installed **critique-me** skill (`.agents/skills/critique-me`).
-Project binding: `{{path-to-this-file}}`.
+**Before triage:** Read `.agents/skills/critique-me/SKILL.md` and `{{path-to-this-file}}`.
+Do not review from this blurb alone.
+
+Follow the installed **critique-me** skill. Project binding: `{{path-to-this-file}}`.
+You are not the default verify gate — implementing agents must follow **verify-work**.
+When config follow-up triage matches: hand off `/living-docs` to the invoking agent; do not edit `.cursor/**` / `AGENTS.md` yourself.
 ```

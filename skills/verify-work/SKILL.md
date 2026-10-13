@@ -3,7 +3,7 @@ name: verify-work
 description: Prove changes with concrete runtime evidence before claiming done. Use when finishing a task, claiming a fix, shipping UI/API/DB/email/CI work, or when "verified" / "done" / "works" is about to be said without fresh proof.
 metadata:
   author: mattpua
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # verify-work
@@ -11,6 +11,14 @@ metadata:
 **Principle:** Verification is concrete evidence that the change works — not a description of how it should work, and not static checks alone.
 
 **Static checks** (typecheck / lint / unit tests) are **prerequisites, not proof**, when a runtime path exists.
+
+## How projects wire this
+
+- **Always-on project table** (recommended): the living acceptance/evidence rows — this is the **contract** agents match every turn.
+- **This skill**: procedure + default evidence classes + gaps/anti-patterns. Load on finish, slash `/verify-work`, or when the always-on rule points here.
+- **Stop hook** (optional): nudge once if runtime edits lack transcript proof.
+
+Do not claim done from the always-on table alone without running the matching evidence.
 
 ## Before saying done
 
@@ -61,9 +69,8 @@ When you **cannot** get concrete proof:
 
 ## Setup (once per project)
 
-1. Copy `templates/acceptance-evidence.md` into the project's agent docs (e.g. `.cursor/rules/verify-work.mdc` or a section in `AGENTS.md`).
-2. Optionally copy `templates/verify-rule.mdc.example` as an always-on Cursor rule.
-3. Replace placeholders with project tools, routes, and mail/CI names.
-4. Keep this skill generic — product-specific rows live in the project copy.
+1. Copy `templates/acceptance-evidence.md` into an **always-on** project rule (or `AGENTS.md` section) — fill tools/paths.
+2. Optionally copy `templates/verify-rule.mdc.example` as a thin always-on pointer to this skill + that table.
+3. Keep this skill generic — product-specific rows live in the project copy.
 
 Optional enforcement: a stop hook that nudges once if runtime edits landed without transcript evidence of matching proof.
