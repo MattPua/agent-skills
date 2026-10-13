@@ -10,7 +10,7 @@
     {
       "title": "Review",
       "description": "Explicit review and prose passes.",
-      "skills": ["critique-me", "unslop"]
+      "skills": ["critique-me", "adversarial-review", "unslop"]
     }
   ]
 }

@@ -4,7 +4,7 @@ description: Pre-merge review and fixer for a diff or PR.
 disable-model-invocation: true
 metadata:
   author: mattpua
-  version: "1.4.0"
+  version: "1.5.0"
 ---
 
 # critique-me
@@ -12,6 +12,8 @@ metadata:
 Pre-merge **review and fixer**. Not the default verify gate — implementing agents must already follow **verify-work**.
 
 Auto-fix clear, local issues in changed application code. Prefer simplify over abstract.
+
+Opposite-model challenge with **no edits** → invoke **adversarial-review** (separate skill). Do not fold cross-model CLI review into this pass.
 
 ## Process
 

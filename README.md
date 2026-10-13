@@ -21,6 +21,7 @@ npx skills add MattPua/agent-skills -s verify-work
 npx skills add MattPua/agent-skills -s living-docs
 npx skills add MattPua/agent-skills -s debug-root-cause
 npx skills add MattPua/agent-skills -s critique-me
+npx skills add MattPua/agent-skills -s adversarial-review
 npx skills add MattPua/agent-skills -s unslop
 ```
 
@@ -45,6 +46,7 @@ Reach these by name (slash / picker). The model will not auto-fire them.
 | Skill | What it does |
 | --- | --- |
 | [`critique-me`](skills/critique-me/SKILL.md) | Pre-merge review and fixer for a diff or PR |
+| [`adversarial-review`](skills/adversarial-review/SKILL.md) | Opposite-model challenge; verdict only, no edits |
 | [`unslop`](skills/unslop/SKILL.md) | Remove AI writing patterns and restore human voice in prose |
 
 ## Project adoption
@@ -61,6 +63,7 @@ skills/
   living-docs/        # model
   debug-root-cause/   # model
   critique-me/        # user
+  adversarial-review/ # user
   unslop/             # user
 docs/crafting-skills.md
 skills.sh.json
