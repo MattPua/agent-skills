@@ -40,6 +40,7 @@ Operative steps name the **Skill tool** and the skill: `Call the Skill tool with
 | --- | --- | --- |
 | `verify-work` | Model | Agents should reach for proof before claiming done |
 | `living-docs` | Model | Agents should capture repeating lessons without being asked |
+| `debug-root-cause` | Model | Agents default to symptom patches; force root-cause process |
 | `critique-me` | User | Explicit pre-merge review; deep, expensive |
 | `unslop` | User | Explicit prose edit pass |
 

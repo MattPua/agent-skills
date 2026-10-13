@@ -5,7 +5,7 @@
     {
       "title": "Quality",
       "description": "Prove work and keep agent docs alive.",
-      "skills": ["verify-work", "living-docs"]
+      "skills": ["verify-work", "living-docs", "debug-root-cause"]
     },
     {
       "title": "Review",

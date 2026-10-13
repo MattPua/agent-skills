@@ -19,6 +19,7 @@ Single skill:
 ```bash
 npx skills add MattPua/agent-skills -s verify-work
 npx skills add MattPua/agent-skills -s living-docs
+npx skills add MattPua/agent-skills -s debug-root-cause
 npx skills add MattPua/agent-skills -s critique-me
 npx skills add MattPua/agent-skills -s unslop
 ```
@@ -35,6 +36,7 @@ The model may reach for these on its own.
 | --- | --- |
 | [`verify-work`](skills/verify-work/SKILL.md) | Prove changes with concrete runtime evidence before claiming done |
 | [`living-docs`](skills/living-docs/SKILL.md) | Capture repeating lessons as anti-patterns the same turn as the fix |
+| [`debug-root-cause`](skills/debug-root-cause/SKILL.md) | Trace failures to root cause; fix there, not symptoms |
 
 ## User-invoked
 
@@ -55,10 +57,11 @@ Reach these by name (slash / picker). The model will not auto-fire them.
 
 ```
 skills/
-  verify-work/     # model
-  living-docs/     # model
-  critique-me/     # user
-  unslop/          # user
+  verify-work/        # model
+  living-docs/        # model
+  debug-root-cause/   # model
+  critique-me/        # user
+  unslop/             # user
 docs/crafting-skills.md
 skills.sh.json
 ```
