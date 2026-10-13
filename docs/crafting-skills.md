@@ -7,7 +7,7 @@ Learnings distilled from [mattpocock/skills](https://github.com/mattpocock/skill
 - Skills fix **real agent failure modes**, not hypothetical process theater.
 - Prefer **small, composable, editable** skills over owning the whole workflow.
 - Work with **any model / harness**. Harness-specific naming or branches belong in a project fork, not here.
-- Do not add a skill that is only a composition of existing skills unless the glue itself is the failure mode.
+- Do not add a skill that is only a composition of existing skills unless the glue itself is the failure mode (`do-it` is that glue: agents forget to chain leaves).
 
 ## Description = context pointer
 
@@ -41,6 +41,7 @@ Operative steps name the **Skill tool** and the skill: `Call the Skill tool with
 | `verify-work` | Model | Agents should reach for proof before claiming done |
 | `living-docs` | Model | Agents should capture repeating lessons without being asked |
 | `debug-root-cause` | Model | Agents default to symptom patches; force root-cause process |
+| `do-it` | User | Entry router; playbooks Call leaf skills so humans don’t |
 | `critique-me` | User | Explicit pre-merge review + auto-fix; deep, expensive |
 | `adversarial-review` | User | Opposite-model challenge; review-only (must not merge into critique-me) |
 | `unslop` | User | Explicit prose edit pass |
