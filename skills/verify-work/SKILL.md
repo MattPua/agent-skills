@@ -3,7 +3,7 @@ name: verify-work
 description: Prove changes with concrete runtime evidence before claiming done. Use when finishing a task, claiming a fix, shipping UI/API/DB/email/CI work, or when "verified" / "done" / "works" is about to be said without fresh proof.
 metadata:
   author: mattpua
-  version: "1.1.0"
+  version: "1.2.0"
 ---
 
 # verify-work
@@ -12,19 +12,23 @@ metadata:
 
 **Static checks** (typecheck / lint / unit tests) are **prerequisites, not proof**, when a runtime path exists.
 
+Harness-agnostic: follow this skill wherever it was installed. Project-specific rows live in the project’s acceptance/evidence doc (see Setup).
+
 ## How projects wire this
 
-- **Always-on project table** (recommended): the living acceptance/evidence rows — this is the **contract** agents match every turn.
-- **This skill**: procedure + default evidence classes + gaps/anti-patterns. Load on finish, slash `/verify-work`, or when the always-on rule points here.
-- **Stop hook** (optional): nudge once if runtime edits lack transcript proof.
+| Piece | Role |
+| --- | --- |
+| **Project acceptance/evidence table** | The **contract** — standing instructions your harness always loads (agent guide section, rule file, etc.) |
+| **This skill** | Procedure, default evidence classes, gaps / anti-patterns — load when finishing, when invoked by name, or when the standing doc points here |
+| **Optional stop / guard hook** | Harness-specific nudge if runtime edits lack transcript proof |
 
-Do not claim done from the always-on table alone without running the matching evidence.
+Do not claim done from the table alone without running the matching evidence.
 
 ## Before saying done
 
 1. **Ship the ask** — behavior works.
-2. **Match every applicable row** in the project's acceptance/evidence table (see Setup).
-3. **Say what you proved** — name the concrete evidence in the reply. For UI: include a screenshot in the chat reply, not only a description.
+2. **Match every applicable row** in the project's acceptance/evidence table.
+3. **Say what you proved** — name the concrete evidence in the reply. For UI: include a screenshot (or equivalent visual proof) in the reply, not only a description.
 4. **Do not imply** unverified layers are done.
 
 ## Evidence classes (default)
@@ -35,9 +39,9 @@ Use the project's table when present. If missing, use this baseline and add miss
 | --- | --- |
 | Lint / imports / mechanical bans | Lint clean on touched files; new bans codified in the project linter when they will keep mattering |
 | New component / helper / style / hook | Dedupe gate: search existing shared surfaces → extend prefer invent → reply names extended vs invented |
-| UI feature / chrome | Live browser (or equivalent): exercise the control; **screenshot in chat** |
-| UI layout / scroll | Same session: scroll-to-end; **screenshot in chat** |
-| UI copy | Look at the screen; **screenshot in chat** |
+| UI feature / chrome | Live UI (browser or equivalent automation): exercise the control; **screenshot (or visual proof) in the reply** |
+| UI layout / scroll | Same session: scroll-to-end; **visual proof in the reply** |
+| UI copy | Look at the screen; **visual proof in the reply** |
 | Backend / data functions | Live call against the running backend with real authz for the path changed |
 | HTTP / API route | Call the route; record status + body shape (auth reject + happy path when both matter) |
 | Database / schema / seed | Exercise the **running** DB (read/write, seed/reset, or query of changed data) |
@@ -57,9 +61,9 @@ When you **cannot** get concrete proof:
 
 ## Anti-patterns
 
-- Claiming done because a later review agent / critique pass will catch it
+- Claiming done because a later review pass will catch it
 - Claiming done after typecheck/lint/unit only when a runtime path exists and was not evidenced
-- “Verified” UI without live UI **or** without a screenshot in the chat reply
+- “Verified” UI without live UI **or** without visual proof in the reply
 - “Verified” backend/HTTP without a live call
 - “Verified” DB without exercising the running database
 - “Verified” email because send returned OK — without opening the message
@@ -69,8 +73,6 @@ When you **cannot** get concrete proof:
 
 ## Setup (once per project)
 
-1. Copy `templates/acceptance-evidence.md` into an **always-on** project rule (or `AGENTS.md` section) — fill tools/paths.
-2. Optionally copy `templates/verify-rule.mdc.example` as a thin always-on pointer to this skill + that table.
+1. Copy `templates/acceptance-evidence.md` into standing project docs your harness loads; fill tools/paths.
+2. Optionally add `templates/standing-rule.md.example` as a short always-loaded pointer to this skill + that table (adapt frontmatter for your harness).
 3. Keep this skill generic — product-specific rows live in the project copy.
-
-Optional enforcement: a stop hook that nudges once if runtime edits landed without transcript evidence of matching proof.
