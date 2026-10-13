@@ -1,8 +1,12 @@
 # Agent Skills
 
-Reusable skills for AI coding agents. Works with any agent that reads [Agent Skills](https://agentskills.io/) / [skills.sh](https://www.skills.sh/docs) `SKILL.md` files.
+Small, composable skills for real engineering with coding agents — not vibe-coding process packs.
+
+Works with any agent that reads [Agent Skills](https://agentskills.io/) / [skills.sh](https://www.skills.sh/docs) `SKILL.md` files.
 
 [![skills.sh](https://skills.sh/b/MattPua/agent-skills)](https://skills.sh/MattPua/agent-skills)
+
+Craft bar: [`docs/crafting-skills.md`](docs/crafting-skills.md) (inspired by [mattpocock/skills](https://github.com/mattpocock/skills)).
 
 ## Install
 
@@ -10,48 +14,51 @@ Reusable skills for AI coding agents. Works with any agent that reads [Agent Ski
 npx skills add MattPua/agent-skills
 ```
 
-Or single skills:
+Single skill:
 
 ```bash
 npx skills add MattPua/agent-skills -s verify-work
 npx skills add MattPua/agent-skills -s living-docs
 npx skills add MattPua/agent-skills -s critique-me
+npx skills add MattPua/agent-skills -s unslop
 ```
-
-The CLI installs into whatever skill directories your tools use (commonly `.agents/skills/`). Update later:
 
 ```bash
 npx skills update
 ```
 
-## Skills
+## Model-invoked
 
-### `verify-work`
+The model may reach for these on its own.
 
-Prove changes with concrete evidence before claiming done. Static checks are prerequisites, not proof, when a runtime path exists.
+| Skill | What it does |
+| --- | --- |
+| [`verify-work`](skills/verify-work/SKILL.md) | Prove changes with concrete runtime evidence before claiming done |
+| [`living-docs`](skills/living-docs/SKILL.md) | Capture repeating lessons as anti-patterns the same turn as the fix |
 
-### `living-docs`
+## User-invoked
 
-Capture likely-to-repeat lessons as anti-patterns the same turn as the fix. Prefer merge over invent; codify mechanical bans in the linter when possible.
+Reach these by name (slash / picker). The model will not auto-fire them.
 
-### `critique-me`
-
-Pre-merge review **and** fixer. Auto-fix clear bugs/rules/reuse issues; hand living-docs follow-ups to the invoking agent. Not a substitute for verify-work.
+| Skill | What it does |
+| --- | --- |
+| [`critique-me`](skills/critique-me/SKILL.md) | Pre-merge review and fixer for a diff or PR |
+| [`unslop`](skills/unslop/SKILL.md) | Remove AI writing patterns and restore human voice in prose |
 
 ## Project adoption
 
-1. Install the skills (above).
-2. Copy templates from each skill into **your** project’s agent-doc layout (agent guide, standing rules, anti-pattern topics, review launcher — whatever your harness loads).
-3. Fill placeholders (`{{…}}`) with project tools and paths. Keep skills generic; put product detail in project copies.
-
-Skills describe **behavior**. Templates are plain markdown — adapt paths and frontmatter for whatever your harness loads.
+1. Install the skills.
+2. Copy each skill’s `templates/` into your standing agent docs; fill `{{…}}` placeholders.
+3. Product detail stays in the project. Skill bodies stay generic.
 
 ## Layout
 
 ```
 skills/
-  verify-work/
-  living-docs/
-  critique-me/
+  verify-work/     # model
+  living-docs/     # model
+  critique-me/     # user
+  unslop/          # user
+docs/crafting-skills.md
 skills.sh.json
 ```

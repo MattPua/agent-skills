@@ -1,12 +1,5 @@
 # living-docs (standing)
 
-Follow the installed **`living-docs`** skill — procedure + placement. Invoke by skill name (`living-docs`).
+Follow the installed **living-docs** skill.
 
-When the user corrects copy/UX **or** the same *class* of mistake repeats **or** verify-work finds a gap **or** placing a new agent artifact:
-
-1. **Same turn as the code fix** — patch the matching topic under `{{anti-patterns-dir}}` (index: `{{anti-patterns-index}}`). Verify gaps / new proof classes → acceptance/evidence table at `{{path-to-acceptance-evidence}}`. Architecture invariants → `{{agents-guide}}`. Architecture topology → `{{architecture-map}}`.
-2. **Only if it will probably repeat.** Prefer strengthen/merge over add. Skip one-offs.
-3. **Dedupe gate** — search siblings → merge prefer invent → `{{docs-dedupe-command}}` when available. Reply: strengthened vs added.
-4. **Codify mechanical bans** in the project linter same turn when the ban will keep mattering; cite the rule on the anti-pattern line.
-5. **Placement** — agent guide vs standing rule vs anti-pattern vs skill vs specialist launcher (see skill). Prefer extend over new file.
-6. **Do not wait to be asked.** Anti-patterns only — no post-mortems.
+When the user corrects copy/UX, the same class of mistake repeats, verify-work finds a gap, or you place a new agent artifact: same-turn anti-patterns (strengthen/merge), placement via the skill, linter bans when mechanical, near-dupe check when available. Reply strengthened vs added.
