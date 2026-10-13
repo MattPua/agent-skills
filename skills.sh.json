@@ -4,8 +4,13 @@
   "groupings": [
     {
       "title": "Quality",
-      "description": "Prove work, keep agent docs alive, and deepen before merge.",
-      "skills": ["verify-work", "living-docs", "critique-me"]
+      "description": "Prove work and keep agent docs alive.",
+      "skills": ["verify-work", "living-docs"]
+    },
+    {
+      "title": "Review",
+      "description": "Explicit review and prose passes.",
+      "skills": ["critique-me", "unslop"]
     }
   ]
 }

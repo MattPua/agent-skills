@@ -3,76 +3,31 @@ name: verify-work
 description: Prove changes with concrete runtime evidence before claiming done. Use when finishing a task, claiming a fix, shipping UI/API/DB/email/CI work, or when "verified" / "done" / "works" is about to be said without fresh proof.
 metadata:
   author: mattpua
-  version: "1.2.0"
+  version: "1.4.0"
 ---
 
 # verify-work
 
-**Principle:** Verification is concrete evidence that the change works — not a description of how it should work, and not static checks alone.
+Concrete evidence that the change works — not a description of how it should work. Static checks (typecheck / lint / unit tests) are prerequisites, not proof, when a runtime path exists.
 
-**Static checks** (typecheck / lint / unit tests) are **prerequisites, not proof**, when a runtime path exists.
+## Process
 
-Harness-agnostic: follow this skill wherever it was installed. Project-specific rows live in the project’s acceptance/evidence doc (see Setup).
+1. Ship the ask (behavior works).
+2. Open the project’s acceptance/evidence table if it exists; otherwise use `references/evidence-classes.md` and add missing rows to the project table same turn.
+3. For every applicable row, run the evidence. UI needs live UI plus visual proof in the reply.
+4. Name what you proved in the reply. Do not imply unverified layers are done.
+5. If you cannot get proof: say so, strengthen the project table same turn, and Call the Skill tool with `"living-docs"` when the miss will repeat.
 
-## How projects wire this
-
-| Piece | Role |
-| --- | --- |
-| **Project acceptance/evidence table** | The **contract** — standing instructions your harness always loads (agent guide section, rule file, etc.) |
-| **This skill** | Procedure, default evidence classes, gaps / anti-patterns — load when finishing, when invoked by name, or when the standing doc points here |
-| **Optional stop / guard hook** | Harness-specific nudge if runtime edits lack transcript proof |
-
-Do not claim done from the table alone without running the matching evidence.
-
-## Before saying done
-
-1. **Ship the ask** — behavior works.
-2. **Match every applicable row** in the project's acceptance/evidence table.
-3. **Say what you proved** — name the concrete evidence in the reply. For UI: include a screenshot (or equivalent visual proof) in the reply, not only a description.
-4. **Do not imply** unverified layers are done.
-
-## Evidence classes (default)
-
-Use the project's table when present. If missing, use this baseline and add missing rows to the project table same turn:
-
-| Kind of change | Evidence (concrete proof) |
-| --- | --- |
-| Lint / imports / mechanical bans | Lint clean on touched files; new bans codified in the project linter when they will keep mattering |
-| New component / helper / style / hook | Dedupe gate: search existing shared surfaces → extend prefer invent → reply names extended vs invented |
-| UI feature / chrome | Live UI (browser or equivalent automation): exercise the control; **screenshot (or visual proof) in the reply** |
-| UI layout / scroll | Same session: scroll-to-end; **visual proof in the reply** |
-| UI copy | Look at the screen; **visual proof in the reply** |
-| Backend / data functions | Live call against the running backend with real authz for the path changed |
-| HTTP / API route | Call the route; record status + body shape (auth reject + happy path when both matter) |
-| Database / schema / seed | Exercise the **running** DB (read/write, seed/reset, or query of changed data) |
-| Email | Trigger send, then **open the real message** (local mail UI or provider dashboard / inbox). Send OK or HTML snapshot alone ≠ proof |
-| CI / deploy / infra | Green run, successful deploy/boot, or script exit 0 |
-| Pure package helpers | Package typecheck/test — enough **only** when no UI/HTTP/DB/email/deploy surface |
-| Git commit / push of prior runtime diffs | Commit/push is not acceptance — prove matching rows in the same transcript, or name the gap and update the table |
+**Done when:** every applicable row has fresh evidence named in the reply, or gaps are explicitly named and the table updated.
 
 ## Gaps
 
-When you **cannot** get concrete proof:
-
-1. Do not write it off.
-2. Say what was not verified and why.
-3. Same turn: strengthen the project's acceptance/evidence table (and living-docs / anti-patterns when the miss will repeat).
-4. Prefer documenting the exact evidence steps to run once unblocked over hoping the human will QA.
+Do not write gaps off. Prefer documenting the exact evidence steps to run once unblocked over hoping the human will QA.
 
 ## Anti-patterns
 
-- Claiming done because a later review pass will catch it
-- Claiming done after typecheck/lint/unit only when a runtime path exists and was not evidenced
-- “Verified” UI without live UI **or** without visual proof in the reply
-- “Verified” backend/HTTP without a live call
-- “Verified” DB without exercising the running database
-- “Verified” email because send returned OK — without opening the message
-- “Verified” CI/deploy without a successful run
-- Waiting for the user to paste an overlay, stack trace, screenshot, email, or failed deploy as QA
-- Learning a new evidence class and leaving it only in chat
+See `references/anti-patterns.md`.
 
-## Setup (once per project)
+## Setup
 
-1. Copy `templates/acceptance-evidence.md` into standing project docs your harness loads; fill tools/paths.
-2. Optionally add `templates/standing-rule.md.example` as a short always-loaded pointer to this skill + that table (adapt frontmatter for your harness).
-3. Keep this skill generic — product-specific rows live in the project copy.
+Copy `templates/acceptance-evidence.md` into standing project docs; fill tools/paths. Optionally add `templates/standing-rule.md.example` as an always-loaded pointer.
