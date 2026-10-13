@@ -1,10 +1,6 @@
----
-description: Anti-patterns for {{topic}} — class-level don’t/prefer only; strengthen/merge before add
-globs:
-  - "{{glob-pattern}}"
----
-
 # Anti-patterns · {{Topic title}}
+
+Standing “don’t / prefer” bullets for this topic. Adapt frontmatter / globs if your harness supports scoped rules.
 
 - Don’t {{bad pattern}}; prefer {{good pattern}}
 - Don’t {{another class}}; prefer {{alternative}} · **lint** `{{rule-id}}` when mechanical

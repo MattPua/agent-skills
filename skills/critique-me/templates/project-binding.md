@@ -2,7 +2,7 @@
 
 Fill this in once per repo. The generic procedure lives in the installed `critique-me` skill.
 
-**Agents must Read this file** (and the skill) before triage — do not rely on a thin agent blurb alone.
+**Agents must Read this file** (and the skill) before triage — do not rely on a thin launcher blurb alone.
 
 ## Paths
 
@@ -10,10 +10,10 @@ Fill this in once per repo. The generic procedure lives in the installed `critiq
 | --- | --- |
 | Agent guide / invariants | `{{agents-guide}}` |
 | Architecture map | `{{architecture-map}}` |
-| Cursor rules root | `{{rules-root}}` |
+| Standing rules root | `{{rules-root}}` |
 | Acceptance / evidence table | `{{verify-work-table}}` |
 | Reuse index | `{{reuse-index}}` |
-| living-docs skill | `.agents/skills/living-docs` |
+| living-docs skill | installed `living-docs` skill path |
 
 ## Skill triage
 
@@ -21,7 +21,7 @@ Only list skills that are **installed** in this repo (or mark `optional — skip
 
 | Skill / rule | Load when diff includes… |
 | --- | --- |
-| `living-docs` | Cursor docs triage or Cursor config follow-up triage matched |
+| `living-docs` | Agent config / docs triage or config follow-up triage matched |
 | `{{skill-a}}` | `{{when-a}}` |
 
 ## Security / authz checklist (in-process — always)
@@ -56,21 +56,18 @@ Only list skills that are **installed** in this repo (or mark `optional — skip
 
 ## Auto-fix roots
 
-Application code under: `{{app-roots}}` (e.g. `apps/**`, `packages/**`, `convex/**`).
+Application code under: `{{app-roots}}` (e.g. `apps/**`, `packages/**`, backend dir).
 
-## Thin Cursor agent (required pattern)
+## Thin launcher (optional — adapt to your harness)
 
 ```markdown
----
-name: critique-me
-model: inherit
-description: Review and fix changed code before merge. Follows installed critique-me skill.
----
+# critique-me launcher
 
-**Before triage:** Read `.agents/skills/critique-me/SKILL.md` and `{{path-to-this-file}}`.
+**Before triage:** Read the installed `critique-me` skill and `{{path-to-this-file}}`.
 Do not review from this blurb alone.
 
-Follow the installed **critique-me** skill. Project binding: `{{path-to-this-file}}`.
-You are not the default verify gate — implementing agents must follow **verify-work**.
-When config follow-up triage matches: hand off `/living-docs` to the invoking agent; do not edit `.cursor/**` / `AGENTS.md` yourself.
+Follow **critique-me**. Project binding: `{{path-to-this-file}}`.
+Not the default verify gate — implementing agents must follow **verify-work**.
+When agent-config follow-up triage matches: hand off `living-docs` to the invoking agent;
+do not edit agent guide / standing rules / anti-patterns yourself.
 ```
