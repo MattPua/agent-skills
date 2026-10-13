@@ -2,4 +2,4 @@
 
 Follow the installed **living-docs** skill.
 
-When the user corrects copy/UX, the same class of mistake repeats, verify-work finds a gap, or you place a new agent artifact: same-turn anti-patterns (strengthen/merge), placement via the skill, linter bans when mechanical, near-dupe check when available. Reply strengthened vs added.
+When the user corrects a mistake, the same class of mistake repeats, verify-work finds a gap, or you place a new agent artifact: same-turn anti-patterns **only if they will probably repeat** (default skip — no upstream forensics / pins / “don’t delete the fix”). Prefer strengthen/merge. Linter bans when mechanical. Reply strengthened vs added, or skipped.
