@@ -3,7 +3,7 @@ name: living-docs
 description: Capture durable, likely-to-repeat lessons as anti-patterns the same turn as the fix. Use when the user corrects you, the same class of mistake repeats, verify-work finds a gap, docs and code diverge, or when placing new agent rules/skills/launchers.
 metadata:
   author: mattpua
-  version: "1.2.1"
+  version: "1.3.0"
 ---
 
 # living-docs
@@ -43,7 +43,7 @@ Prefer **extend** an existing artifact over a new file.
 | Step-by-step how-to with clear when | Skill `SKILL.md` | thin checklist + links |
 | Distinct isolated review / specialist role | Harness subagent / launcher config (if any) | specialized workflow |
 
-Do **not** invent parallel doc types unless the user asked. Exact folders are harness-specific — use the project binding.
+Do **not** invent parallel doc types unless the user asked. Exact folders are project/harness-specific — use the project binding.
 
 ## Dedupe gate (required)
 
@@ -52,7 +52,7 @@ Before and after every anti-pattern edit:
 1. **Search** the matching topic **and** sibling topics for the same *class*. Skim the agent guide / core rules so you don’t parallel-restate them.
 2. **Prefer merge** if covered; add only if the class is new.
 3. **Prove** with the project’s near-dupe check if it has one. In the reply: strengthened vs added (+ check passed when run).
-4. A “add a doc” nudge from a stop hook is **not** a license to append a near-copy.
+4. A “add a doc” nudge is **not** a license to append a near-copy.
 
 ## Reply contract
 
@@ -67,14 +67,13 @@ When you edit docs: say whether you **strengthened** or **added**, and that the 
 
 | Piece | Role |
 | --- | --- |
-| **Standing project rule / binding** | Paths, lint command, anti-patterns dir — always loaded if your harness supports it |
+| **Standing project rule / binding** | Paths, lint command, anti-patterns dir |
 | **This skill** | Procedure + placement + dedupe |
-| **Optional stop / guard hook** | Harness-specific nudge after corrections without a docs edit |
+| **Optional guard nudge** | Reminder after corrections without a docs edit |
 
 ## Setup (once per project)
 
 1. Copy `templates/anti-patterns-index.md` into the project.
 2. Create topic files from `templates/topic-anti-patterns.md.example`.
-3. Add `templates/standing-rule.md.example` as always-loaded instructions (adapt for your harness).
+3. Add `templates/standing-rule.md.example` as always-loaded instructions.
 4. Add a near-dupe script if you want CI enforcement.
-5. Keep this skill generic — product paths live in the project copies.

@@ -1,6 +1,6 @@
 # Agent Skills
 
-Reusable skills for AI coding agents. **Harness-agnostic** — works with any agent that reads [Agent Skills](https://agentskills.io/) / [skills.sh](https://www.skills.sh/docs) `SKILL.md` files (Cursor, Claude Code, Codex, Gemini CLI, Windsurf, OpenCode, …).
+Reusable skills for AI coding agents. Works with any agent that reads [Agent Skills](https://agentskills.io/) / [skills.sh](https://www.skills.sh/docs) `SKILL.md` files.
 
 [![skills.sh](https://skills.sh/b/MattPua/agent-skills)](https://skills.sh/MattPua/agent-skills)
 
@@ -44,7 +44,7 @@ Pre-merge review **and** fixer. Auto-fix clear bugs/rules/reuse issues; hand liv
 2. Copy templates from each skill into **your** project’s agent-doc layout (agent guide, standing rules, anti-pattern topics, review launcher — whatever your harness loads).
 3. Fill placeholders (`{{…}}`) with project tools and paths. Keep skills generic; put product detail in project copies.
 
-Skills describe **behavior**. Templates are plain markdown — adapt frontmatter / paths for Cursor (`.mdc`), Claude, Codex, or others. Do not assume a single IDE.
+Skills describe **behavior**. Templates are plain markdown — adapt paths and frontmatter for whatever your harness loads.
 
 ## Layout
 

@@ -3,7 +3,7 @@ name: verify-work
 description: Prove changes with concrete runtime evidence before claiming done. Use when finishing a task, claiming a fix, shipping UI/API/DB/email/CI work, or when "verified" / "done" / "works" is about to be said without fresh proof.
 metadata:
   author: mattpua
-  version: "1.2.0"
+  version: "1.3.0"
 ---
 
 # verify-work
@@ -12,15 +12,15 @@ metadata:
 
 **Static checks** (typecheck / lint / unit tests) are **prerequisites, not proof**, when a runtime path exists.
 
-Harness-agnostic: follow this skill wherever it was installed. Project-specific rows live in the project’s acceptance/evidence doc (see Setup).
+Follow this skill wherever it was installed. Project-specific evidence rows live in the project’s acceptance/evidence doc (see Setup).
 
 ## How projects wire this
 
 | Piece | Role |
 | --- | --- |
-| **Project acceptance/evidence table** | The **contract** — standing instructions your harness always loads (agent guide section, rule file, etc.) |
-| **This skill** | Procedure, default evidence classes, gaps / anti-patterns — load when finishing, when invoked by name, or when the standing doc points here |
-| **Optional stop / guard hook** | Harness-specific nudge if runtime edits lack transcript proof |
+| **Project acceptance/evidence table** | The **contract** — standing instructions the project always loads |
+| **This skill** | Procedure, default evidence classes, gaps / anti-patterns |
+| **Optional guard nudge** | Project/harness hook that reminds the agent if runtime edits lack proof |
 
 Do not claim done from the table alone without running the matching evidence.
 
@@ -48,7 +48,7 @@ Use the project's table when present. If missing, use this baseline and add miss
 | Email | Trigger send, then **open the real message** (local mail UI or provider dashboard / inbox). Send OK or HTML snapshot alone ≠ proof |
 | CI / deploy / infra | Green run, successful deploy/boot, or script exit 0 |
 | Pure package helpers | Package typecheck/test — enough **only** when no UI/HTTP/DB/email/deploy surface |
-| Git commit / push of prior runtime diffs | Commit/push is not acceptance — prove matching rows in the same transcript, or name the gap and update the table |
+| Git commit / push of prior runtime diffs | Commit/push is not acceptance — prove matching rows in the same turn, or name the gap and update the table |
 
 ## Gaps
 
@@ -73,6 +73,5 @@ When you **cannot** get concrete proof:
 
 ## Setup (once per project)
 
-1. Copy `templates/acceptance-evidence.md` into standing project docs your harness loads; fill tools/paths.
-2. Optionally add `templates/standing-rule.md.example` as a short always-loaded pointer to this skill + that table (adapt frontmatter for your harness).
-3. Keep this skill generic — product-specific rows live in the project copy.
+1. Copy `templates/acceptance-evidence.md` into standing project docs; fill tools/paths.
+2. Optionally add `templates/standing-rule.md.example` as an always-loaded pointer to this skill + that table.

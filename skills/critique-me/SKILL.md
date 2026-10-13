@@ -3,7 +3,7 @@ name: critique-me
 description: Review and fix changed code before merge. Use when asked to critique, review a PR/diff, deepen before merge, or run critique-me — auto-fix clear bugs/rules/reuse issues; hand living-docs follow-ups to the invoking agent; not a substitute for verify-work.
 metadata:
   author: mattpua
-  version: "1.2.0"
+  version: "1.3.0"
 ---
 
 # critique-me
@@ -14,7 +14,7 @@ Pre-merge **review and fixer**. Deepen before merge — **not** the default veri
 
 **Less code is better.** Prefer simplify over abstract. Do not praise layers for their own sake.
 
-Harness-agnostic: project triage tables and authz checklists live in the **project binding**. Subagent / launcher config is optional and harness-specific.
+Project triage tables and authz checklists live in the **project binding**. A thin launcher is optional.
 
 ## Load first (required)
 
@@ -29,7 +29,7 @@ Before triage or edits:
 | Role | Who |
 | --- | --- |
 | Same-turn proof | **`verify-work`** (implementing agent) |
-| Living agent docs | **`living-docs`** — load for agent-config/doc diffs; hand config follow-ups to the **invoking** agent (do not edit living agent docs yourself when running as a review subagent) |
+| Living agent docs | **`living-docs`** — load for agent-config/doc diffs; hand config follow-ups to the **invoking** agent (do not edit living agent docs yourself when running as a review specialist) |
 | Security deep-dive | Project security agent/skill **if installed** — else in-process authz from the binding |
 | Tests | Project test agent/skill **if installed** — else recommend tests in the report only |
 
@@ -72,7 +72,7 @@ When the diff includes agent guide, standing rules, skills, anti-patterns, archi
 When the diff introduces or repeats a pattern that **should** be a standing rule but isn’t clearly covered — even with no agent-config paths:
 
 - Draft **Agent config follow-up** for the invoking agent (Gap + invoke `living-docs` + Action required).
-- **Do not** edit agent guide / standing rules / anti-patterns yourself when acting as the review subagent.
+- **Do not** edit agent guide / standing rules / anti-patterns yourself when acting as the review specialist.
 
 ### Reuse triage
 
@@ -121,7 +121,7 @@ Add report sections when the project binding’s signals match. Skip for docs-on
 
 **Security / authz** — Follow the project binding.
 
-**Structure / YAGNI** — Reuse existing modules; edit over new file; no “future-proof” machinery without need.
+**Structure / YAGNI** — Reuse existing modules; edit over new file; no machinery without need.
 
 **Performance** — Prefer indexed/bounded data access; lean cold paths.
 
@@ -150,4 +150,4 @@ Add report sections when the project binding’s signals match. Skip for docs-on
 1. Install this skill.
 2. Copy `templates/project-binding.md` into standing project docs; fill triage / authz / signals.
 3. Leave delegate names blank or mark `in-process only` until those specialists exist.
-4. Optional: a thin harness launcher that **requires Read** of this skill + the binding before triage (see template).
+4. Optional: a thin launcher that **requires Read** of this skill + the binding before triage (see template).

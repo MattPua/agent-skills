@@ -10,9 +10,3 @@ When the user corrects copy/UX **or** the same *class* of mistake repeats **or**
 4. **Codify mechanical bans** in the project linter same turn when the ban will keep mattering; cite the rule on the anti-pattern line.
 5. **Placement** — agent guide vs standing rule vs anti-pattern vs skill vs specialist launcher (see skill). Prefer extend over new file.
 6. **Do not wait to be asked.** Anti-patterns only — no post-mortems.
-
-<!--
-Harness adapters (optional):
-- Cursor: wrap with `alwaysApply: true` in a `.mdc`
-- Other tools: paste into always-on agent instructions
--->
