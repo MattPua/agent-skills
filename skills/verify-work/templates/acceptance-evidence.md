@@ -18,7 +18,7 @@ Replace `{{…}}` placeholders with project-specific tools and paths.
 | **Email** | Message sent and renderable | Trigger send, then open real message (`{{mail-ui}}`). Assert subject, key body, CTA |
 | **CI / deploy / infra** | Pipeline or deploy path succeeds | Green CI / successful deploy / script exit 0 |
 | **Packages (pure helpers)** | Types/tests pass for what changed | Package typecheck/test — only when no UI/HTTP/DB/email/deploy surface |
-| **Git commit / push of prior runtime diffs** | Commit/push ≠ acceptance for runtime surfaces | Prove matching rows in the same transcript, or name gap + update this table |
+| **Git commit / push of prior runtime diffs** | Commit/push ≠ acceptance for runtime surfaces | Prove matching rows in the same turn, or name gap + update this table |
 
 ## Before “done”
 
