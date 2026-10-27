@@ -22,7 +22,7 @@ When the diff introduces a pattern that should be a standing rule but isn’t co
 
 ## Reuse
 
-Deepen when new helpers/components/queries may parallel existing ones. Grep for equivalents; apply when clear.
+Deepen when the diff adds any helper, component, query, schema, constant, type, or parser — new or moved. Grep the whole repo and installed dependencies for equivalents (not just other files in the diff); apply when clear. Never describe new code as “removing a duplicate” without that search.
 
 ## Threat model
 

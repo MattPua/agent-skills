@@ -4,7 +4,7 @@ description: Pre-merge review and fixer for a diff or PR.
 disable-model-invocation: true
 metadata:
   author: mattpua
-  version: "1.6.0"
+  version: "1.7.0"
 ---
 
 # critique-me
@@ -19,7 +19,7 @@ Opposite-model challenge with **no edits** → invoke **adversarial-review** (se
 
 1. **Load first** — this skill, then the project binding (search for `critique-me` binding / review notes). No binding → generics only; note that in the report.
 2. **Scope** — git diff or files the user named. Ask if unclear. Confirm non-empty.
-3. **Triage** — follow `references/triage.md`. Call the Skill tool with `"living-docs"` when agent-config / docs triage matches. Skip missing skills/agents; note skips.
+3. **Triage** — follow `references/triage.md`. Call the Skill tool with `"living-docs"` when agent-config / docs triage matches. If a matched skill/agent is missing or can't be delegated (e.g. no Agent tool inside a subagent), run its procedure in-process. A matched triage that did not run is a **Warning**, never a footnote.
 4. **Read full files** for changed areas (diffs alone are not enough).
 5. **Authz / standards** — run the project binding checklist in-process always.
 6. **Auto-fix** — clear bugs, rule violations, obvious reuse/YAGNI/trims and speculative robustness (see Right-sized scope) in app code. Do not edit agent docs; hand those to the invoking agent via living-docs.
@@ -34,7 +34,7 @@ Over-built is as wrong as under-built. For each piece of handling in the diff (r
 
 ## Only changed code
 
-Do not flag or edit pre-existing code that wasn’t modified.
+Do not flag or edit pre-existing code that wasn’t modified. Moved or extracted code counts as changed. Reuse checks still search the whole repo: new code that duplicates pre-existing code is a finding on the new code.
 
 ## Setup
 
