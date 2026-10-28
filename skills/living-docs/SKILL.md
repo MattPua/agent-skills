@@ -3,7 +3,7 @@ name: living-docs
 description: "Capture durable, likely-to-repeat lessons as anti-patterns the same turn as the fix. Use when the user corrects you, the same class of mistake repeats, verify-work finds a gap, docs and code diverge, or when placing new agent rules/skills/launchers."
 metadata:
   author: mattpua
-  version: '1.6.0'
+  version: '1.7.0'
 ---
 
 # living-docs
@@ -39,7 +39,7 @@ Keep agent-facing docs alive so the next session does not relearn the same lesso
 
 ## Pair with verify-work
 
-Skipped / impossible proof / new evidence class → update the project’s acceptance/evidence table, and Call the Skill tool with `"living-docs"` when the miss will repeat as an anti-pattern.
+Skipped / impossible proof / new evidence class → tighten or add a row in the project's verify-work addons (or propose a base row upstream when any project would hit it), and Call the Skill tool with `"living-docs"` when the miss will repeat as an anti-pattern.
 
 ## Setup
 

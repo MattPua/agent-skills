@@ -1,7 +1,7 @@
 # verify-work (standing)
 
-Follow the installed **verify-work** skill.
+Follow the installed **verify-work** skill: prove every applicable row of its base evidence classes plus this project's addons before claiming done.
 
-**Project contract:** `{{path-to-acceptance-evidence}}`
+**Project addons:** `{{path-to-project-addons}}`
 
-Prove every applicable row before claiming done. Gaps → name them and strengthen the table same turn.
+Gaps → name them; tighten the addons the same turn (or propose a base row upstream when any project would hit it).

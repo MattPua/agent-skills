@@ -3,7 +3,7 @@ name: create-verification-skill
 description: "Generate a project-local verify-<app> / verify-<surface> skill that launches, drives, and proves the real app, plus a feature map. Use when something needs runtime verification and no project verify-* skill covers that app or surface, or when the user asks for a verification harness."
 metadata:
   author: mattpua
-  version: "1.1.0"
+  version: "1.2.0"
   credit: Adapted from cursor/plugins pstack create-verification-skill
 ---
 
@@ -65,7 +65,7 @@ Stand-in targets (container vs real VM, etc.): list every setup step the stand-i
 
 ## 5. Wire verify-work
 
-In the project’s acceptance/evidence table (or standing verify-work rule), point UI / app rows at this `verify-<app>` skill as the concrete drive path when present.
+In the project's verify-work addons (Tools → Verify skills), name this `verify-<app>` skill and which base rows it drives (UI, forms, …).
 
 ## 6. Offer maintenance
 

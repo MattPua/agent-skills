@@ -4,7 +4,7 @@ description: "Single entry for rigorous work — pick a playbook and run the lea
 disable-model-invocation: true
 metadata:
   author: mattpua
-  version: "1.2.0"
+  version: "1.3.0"
   credit: Entry-point pattern inspired by cursor/plugins pstack poteto-mode
 ---
 

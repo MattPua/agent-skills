@@ -11,7 +11,7 @@ Fill this in once per repo. The generic procedure lives in the installed `critiq
 | Agent guide / invariants | `{{agents-guide}}` |
 | Architecture map | `{{architecture-map}}` |
 | Standing rules root | `{{rules-root}}` |
-| Acceptance / evidence table | `{{verify-work-table}}` |
+| verify-work project addons | `{{verify-work-addons}}` |
 | Reuse index | `{{reuse-index}}` |
 | living-docs skill | installed `living-docs` skill path |
 
