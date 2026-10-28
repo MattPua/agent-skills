@@ -1,6 +1,6 @@
 ---
 name: verify-work
-description: Prove changes with concrete runtime evidence before claiming done. Use when finishing a task, claiming a fix, shipping UI/API/DB/email/CI work, or when "verified" / "done" / "works" is about to be said without fresh proof.
+description: "Prove changes with concrete runtime evidence before claiming done. Use when finishing a task, claiming a fix, shipping UI/API/DB/email/CI work, or when \"verified\" / \"done\" / \"works\" is about to be said without fresh proof."
 metadata:
   author: mattpua
   version: "1.6.0"

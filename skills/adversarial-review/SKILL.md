@@ -1,6 +1,6 @@
 ---
 name: adversarial-review
-description: Opposite-model adversarial review: challenge a diff or plan through a different model's CLI and return a verdict only, no edits. Use when a change is large, risky, or contested, when a pre-merge review wants a second opinion, or when the user asks for a cross-model challenge.
+description: "Opposite-model adversarial review: challenge a diff or plan through a different model's CLI and return a verdict only, no edits. Use when a change is large, risky, or contested, when a pre-merge review wants a second opinion, or when the user asks for a cross-model challenge."
 metadata:
   author: mattpua
   version: "1.1.0"

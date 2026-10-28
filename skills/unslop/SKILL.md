@@ -1,6 +1,6 @@
 ---
 name: unslop
-description: Edit prose to remove AI writing patterns and restore a human voice. Use when writing or reviewing prose meant for people (docs, READMEs, PR descriptions, release notes, user-facing copy), or when the user says text sounds generic or AI-written.
+description: "Edit prose to remove AI writing patterns and restore a human voice. Use when writing or reviewing prose meant for people (docs, READMEs, PR descriptions, release notes, user-facing copy), or when the user says text sounds generic or AI-written."
 metadata:
   author: mattpua
   version: "1.1.0"

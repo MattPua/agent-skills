@@ -1,6 +1,6 @@
 ---
 name: do-it
-description: Single entry for rigorous work — pick a playbook and run the leaf skills for you.
+description: "Single entry for rigorous work — pick a playbook and run the leaf skills for you."
 disable-model-invocation: true
 metadata:
   author: mattpua

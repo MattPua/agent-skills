@@ -1,6 +1,6 @@
 ---
 name: blast-radius
-description: Find what a change could break outside its own diff before it ships, and prove the one fact it's safe because of by running real code. Use before merging a change that touches a shared type, a URL or slug scheme, a DB schema or migration, a public API or response shape, a config or feature flag, or anything other code reads by value rather than by symbol; also for "what could this break" or a small diff you don't trust.
+description: "Find what a change could break outside its own diff before it ships, and prove the one fact it's safe because of by running real code. Use before merging a change that touches a shared type, a URL or slug scheme, a DB schema or migration, a public API or response shape, a config or feature flag, or anything other code reads by value rather than by symbol; also for \"what could this break\" or a small diff you don't trust."
 metadata:
   author: mattpua
   version: "1.0.0"
