@@ -3,7 +3,7 @@ name: living-docs
 description: Capture durable, likely-to-repeat lessons as anti-patterns the same turn as the fix. Use when the user corrects you, the same class of mistake repeats, verify-work finds a gap, docs and code diverge, or when placing new agent rules/skills/launchers.
 metadata:
   author: mattpua
-  version: '1.5.0'
+  version: '1.6.0'
 ---
 
 # living-docs
@@ -14,6 +14,13 @@ Keep agent-facing docs alive so the next session does not relearn the same lesso
 
 1. Decide if the lesson will **probably repeat as an agent mistake class**. Default to **skip**. One-offs → short “no doc — won’t repeat” and stop.
 2. Search matching + sibling anti-pattern topics for the same _class_. Prefer strengthen/merge over add.
+2a. **Fix the class at the highest level that works**, prose last (from pstack `correct`). Assume the next agent sees only the files it opened and copies the nearest example:
+    1. **Architecture** — one owner per piece of state, one supported way per task, shared modules instead of copies; delete the old way an agent would copy.
+    2. **Types** — make the bad state unwritable.
+    3. **Lint / CI check** whose error names the file or function to use instead.
+    4. **Test** of the behavior.
+    5. **Prose rule** (steps 3–4 below) only for judgment calls nothing can enforce.
+    If a prose rule for this class already exists and the mistake happened again, that's the signal to move it up a level, not to reword it.
 3. Write class-level “don’t X; prefer Y.” No post-mortems, magic numbers, or one-surface archaeology. Tuned values live in code.
 4. Place the edit: anti-pattern topic, agent guide (invariants), or architecture map (topology). See `references/placement.md`.
 5. If the ban is mechanical, codify it in the project linter same turn and cite the rule on the anti-pattern line.

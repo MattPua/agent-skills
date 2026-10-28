@@ -4,7 +4,7 @@ description: Single entry for rigorous work — pick a playbook and run the leaf
 disable-model-invocation: true
 metadata:
   author: mattpua
-  version: "1.0.0"
+  version: "1.2.0"
   credit: Entry-point pattern inspired by cursor/plugins pstack poteto-mode
 ---
 
@@ -34,10 +34,10 @@ One entry point. Match the task to a playbook, copy its steps into a todolist **
 
 ## Non-negotiables
 
-- **Prove it.** Before claiming done on a runtime path, Call the Skill tool with `"verify-work"`.
+- **Prove it.** Before claiming done on a runtime path, Call the Skill tool with `"verify-work"`. No project harness covers the surface → verify-work's *Missing harness* step: prove ad hoc, then ask whether to build one.
 - **Root cause on bugs.** Call the Skill tool with `"debug-root-cause"` — no symptom patches.
 - **Lessons that will repeat.** Call the Skill tool with `"living-docs"` the same turn.
-- **Prefer simple.** Smallest change that meets the ask. Delete before adding layers.
+- **Prefer simple.** Smallest change that meets the ask. Subtract before you add: remove the dead path, the duplicate, the extra file first, then build. One source of truth per decision.
 - **Irreversible pause.** Force-push to shared branches, prod deploys, data deletion, customer messages — stop and confirm. Reversible work proceeds.
 
 ## Done

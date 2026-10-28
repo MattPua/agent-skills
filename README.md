@@ -24,6 +24,7 @@ npx skills add MattPua/agent-skills -s do-it
 npx skills add MattPua/agent-skills -s create-verification-skill
 npx skills add MattPua/agent-skills -s maintain-verification-skill
 npx skills add MattPua/agent-skills -s critique-me
+npx skills add MattPua/agent-skills -s blast-radius
 npx skills add MattPua/agent-skills -s adversarial-review
 npx skills add MattPua/agent-skills -s unslop
 ```
@@ -34,26 +35,27 @@ npx skills update
 
 ## Model-invoked
 
-The model may reach for these on its own.
+The model may reach for these on its own, and you can also call them by name.
 
 | Skill | What it does |
 | --- | --- |
 | [`verify-work`](skills/verify-work/SKILL.md) | Prove changes with concrete runtime evidence before claiming done |
 | [`living-docs`](skills/living-docs/SKILL.md) | Capture repeating lessons as anti-patterns the same turn as the fix |
 | [`debug-root-cause`](skills/debug-root-cause/SKILL.md) | Trace failures to root cause; fix there, not symptoms |
+| [`critique-me`](skills/critique-me/SKILL.md) | Pre-merge review and fixer for a diff or PR |
+| [`blast-radius`](skills/blast-radius/SKILL.md) | Find what a change breaks outside its diff; prove the one safety fact by running code |
+| [`adversarial-review`](skills/adversarial-review/SKILL.md) | Opposite-model challenge; verdict only, no edits |
+| [`create-verification-skill`](skills/create-verification-skill/SKILL.md) | Generate project-local `verify-<app>` harness + feature map |
+| [`maintain-verification-skill`](skills/maintain-verification-skill/SKILL.md) | Keep that harness/map honest (source + live pass) |
+| [`unslop`](skills/unslop/SKILL.md) | Remove AI writing patterns and restore human voice in prose |
 
 ## User-invoked
 
-Reach these by name (slash / picker). The model will not auto-fire them.
+Reach this by name (slash / picker). The model will not auto-fire it.
 
 | Skill | What it does |
 | --- | --- |
 | [`do-it`](skills/do-it/SKILL.md) | Single entry — pick a playbook; leaf skills run as steps |
-| [`create-verification-skill`](skills/create-verification-skill/SKILL.md) | Generate project-local `verify-<app>` harness + feature map |
-| [`maintain-verification-skill`](skills/maintain-verification-skill/SKILL.md) | Keep that harness/map honest (source + live pass) |
-| [`critique-me`](skills/critique-me/SKILL.md) | Pre-merge review and fixer for a diff or PR |
-| [`adversarial-review`](skills/adversarial-review/SKILL.md) | Opposite-model challenge; verdict only, no edits |
-| [`unslop`](skills/unslop/SKILL.md) | Remove AI writing patterns and restore human voice in prose |
 
 Default for nontrivial work: **`/do-it`**. It routes bug-fix / feature / investigation / pre-merge / docs / verification-harness / figure-it-out and calls leaf skills for you.
 

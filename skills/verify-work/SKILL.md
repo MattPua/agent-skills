@@ -3,7 +3,7 @@ name: verify-work
 description: Prove changes with concrete runtime evidence before claiming done. Use when finishing a task, claiming a fix, shipping UI/API/DB/email/CI work, or when "verified" / "done" / "works" is about to be said without fresh proof.
 metadata:
   author: mattpua
-  version: "1.5.0"
+  version: "1.6.0"
 ---
 
 # verify-work
@@ -24,7 +24,13 @@ Concrete evidence that the change works — not a description of how it should w
 
 Do not write gaps off. Prefer documenting the exact evidence steps to run once unblocked over hoping the human will QA.
 
-No scripted way to drive the app → Call the Skill tool with `"create-verification-skill"` (user-invoked; ask or wait for explicit invoke). Map drift on an existing harness → `"maintain-verification-skill"`.
+### Missing harness → prompt the user
+
+Before driving anything, check what covers the surface you're asked to verify (an app, a kind of flow such as forms or checkout, a CLI): a project-local `verify-<app>` / `verify-<surface>` skill, or a feature-map entry inside one.
+
+- **Nothing covers it** → still get the best ad-hoc proof you can this turn, then **ask the user** whether to build a harness for that surface. Name the surface and what was ad-hoc about this proof. Use the harness's question tool if it has one (one question, "create a verify-<surface> skill" as the suggested answer); otherwise end your reply with the question. On yes, call the Skill tool with `"create-verification-skill"`. Don't build one unasked (it's a multi-step task), and never stay silent about the gap.
+- **A skill exists but its map lacks this feature, or a mapped recipe no longer matches the app** → call the Skill tool with `"maintain-verification-skill"` for that feature, then drive it.
+- Ask once per surface per session. If the user declines, don't ask again for that surface.
 
 ## Anti-patterns
 

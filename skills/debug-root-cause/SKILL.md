@@ -7,7 +7,7 @@ description: >-
   still failing, flaky, can't reproduce.
 metadata:
   author: mattpua
-  version: "1.0.0"
+  version: "1.1.0"
   credit: Inspired by poteto/noodle debugging (https://www.skills.sh/poteto/noodle/debugging)
 ---
 
@@ -31,6 +31,17 @@ Trace every problem to its root cause. Symptom patches (extra guards, retries, b
 9. **Capture if it will repeat.** Call the Skill tool with `"living-docs"` when the miss is class-level and likely to recur.
 
 **Done when:** root cause is named, fix addresses that layer, verify-work evidence is fresh (or gaps named), and same-pattern sites are checked.
+
+## Two fixes failed? Attack the premise
+
+When two or more fixes that rest on the same assumption have failed the same check, suspect the assumption, not the fixes (from pstack `principle-attack-the-premise`).
+
+1. **Write the premise down** — the one sentence every failed fix assumed ("the click isn't registering", "the backfill key matches").
+2. **Test it before the next fix.** Make an observation that would come out differently if the premise were false (log the real value, reset state and retry from clean, run the step in isolation).
+3. **Follow the evidence.** If it contradicts the premise, the cause is elsewhere: look for what the failures share that the premise didn't predict. If it confirms it, ask the next "why".
+4. **Remove the condition** instead of compensating for it.
+
+Don't start a third fix until the premise is written down and tested.
 
 ## When stuck
 

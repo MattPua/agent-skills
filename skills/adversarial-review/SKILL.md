@@ -1,10 +1,9 @@
 ---
 name: adversarial-review
-description: Opposite-model adversarial review — challenge a diff via a different model CLI; verdict only, no edits.
-disable-model-invocation: true
+description: Opposite-model adversarial review: challenge a diff or plan through a different model's CLI and return a verdict only, no edits. Use when a change is large, risky, or contested, when a pre-merge review wants a second opinion, or when the user asks for a cross-model challenge.
 metadata:
   author: mattpua
-  version: "1.0.0"
+  version: "1.1.0"
   credit: Adapted from poteto/noodle adversarial-review (https://www.skills.sh/poteto/noodle/adversarial-review)
 ---
 
@@ -57,5 +56,5 @@ claude -p "<prompt>" > "$REVIEW_DIR/skeptic.md"
 
 ## After the verdict
 
-- Applying accepted fixes → user may invoke **critique-me** (or implement manually).
+- Applying accepted fixes → call the Skill tool with `"critique-me"` (or implement them directly).
 - Recurring class of miss → Call the Skill tool with `"living-docs"` only if the user asked you to capture lessons; this skill itself stays review-only on the product diff.

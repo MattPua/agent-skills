@@ -1,10 +1,9 @@
 ---
 name: create-verification-skill
-description: Generate a project-local verify-<app> skill that launches, drives, and proves the real app.
-disable-model-invocation: true
+description: Generate a project-local verify-<app> / verify-<surface> skill that launches, drives, and proves the real app, plus a feature map. Use when something needs runtime verification and no project verify-* skill covers that app or surface, or when the user asks for a verification harness.
 metadata:
   author: mattpua
-  version: "1.0.0"
+  version: "1.1.0"
   credit: Adapted from cursor/plugins pstack create-verification-skill
 ---
 

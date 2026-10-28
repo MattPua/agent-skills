@@ -1,10 +1,9 @@
 ---
 name: maintain-verification-skill
-description: Keep a project verify-<app> skill and feature map honest via source + live passes.
-disable-model-invocation: true
+description: Keep a project verify-<app> skill and its feature map honest with a source pass and a live pass. Use when a verify-* skill's recipe no longer matches the app, its map is missing a feature you need to verify, or after features are added, renamed, or removed.
 metadata:
   author: mattpua
-  version: "1.0.0"
+  version: "1.1.0"
   credit: Adapted from cursor/plugins pstack maintain-verification-skill
 ---
 
