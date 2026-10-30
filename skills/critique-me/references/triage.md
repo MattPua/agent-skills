@@ -36,6 +36,22 @@ Name and behaviour searches miss shapes. Also search **by structure**:
 
 A reuse pass that reports no structural search is incomplete; list it under triage skips.
 
+## Tests
+
+For every test added or changed, and every changed branch without one:
+
+- **Value gate.** Name the realistic regression the test catches and what a user or the business loses if it breaks. No answer → the test shouldn't exist.
+- **Not worth a test:** the simplest/default case alone, cosmetic order or formatting, a branch another test already reaches, a mock-in/same-out pass-through, constants.
+- **Missing:** changed branches, side effects, and failure paths with real consequences and no test → list them.
+
+## Sibling parity
+
+When the diff adds a page, flow, or component that has a same-role sibling elsewhere in the app:
+
+- Open the sibling and the new one side by side (code, and the running UI when available). List every difference: sections, controls, copy patterns, formatters, empty states, child components (filters, maps, popups, items).
+- Each difference is either forced by the data or a finding. Shared pieces should be shared modules, not copies.
+- Behaviour that varies by role, mode, or lifecycle state: list each variant and whether the diff handles it.
+
 ## Threat model
 
 When auth surfaces, public APIs, tokens/keys, uploads, SSRF-ish fetches, or expanded authorization change:

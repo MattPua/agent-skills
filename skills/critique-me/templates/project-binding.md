@@ -55,6 +55,18 @@ Only list skills that are **installed** in this repo (or mark `optional — skip
 - Any new or moved helper, component, query, schema, constant, type, or parser
 - Search `{{reuse-search-roots}}` and installed dependencies; can't delegate → run the reuse procedure in-process
 
+## Specialists
+
+Map each critique-me specialist to what this repo has installed (agent, skill, or `generic` = the skill's checklist in a plain subagent).
+
+| Specialist | Agent / skill here | Extra project checks |
+| --- | --- | --- |
+| Reuse | `{{reuse-agent}}` | `{{reuse-extra}}` |
+| Blast radius | `blast-radius` | |
+| Security | `{{security-agent}}` | |
+| Tests | `{{test-agent}}` | `{{test-extra}}` |
+| Sibling parity | `{{parity-agent}}` | `{{sibling-families}}` |
+
 ## Auto-fix roots
 
 Application code under: `{{app-roots}}` (e.g. `apps/**`, `packages/**`, backend dir).
