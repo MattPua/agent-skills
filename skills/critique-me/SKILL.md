@@ -43,7 +43,7 @@ Matched specialists are **required**, not optional. A matched specialist that di
 | Reuse | adds/moves any type (named or inline), component, helper, query, schema, constant, parser | triage → Reuse (name **and** structural search) |
 | Blast radius | changes a shared type/response shape, URL/slug/key scheme, schema/migration/backfill, public API, flag | `blast-radius` skill |
 | Security | touches auth, public endpoints, keys/tokens, uploads, outbound fetches, data exposure | triage → Threat model |
-| Tests | changes branching logic, or adds/changes tests | triage → Tests |
+| Tests | changes branching logic, or adds/changes tests | `write-tests` skill (value gate), else triage → Tests |
 | Sibling parity | adds a page/flow/component that has a same-role sibling, or behaviour that varies by role/mode/state | triage → Sibling parity |
 
 The project binding maps each specialist to an installed agent or skill; unmapped ones use the checklist above in a generic subagent.

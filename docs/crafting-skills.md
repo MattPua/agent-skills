@@ -40,6 +40,7 @@ Operative steps name the **Skill tool** and the skill: `Call the Skill tool with
 | --- | --- | --- |
 | `verify-work` | Model | Agents should reach for proof before claiming done |
 | `living-docs` | Model | Agents should capture repeating lessons without being asked |
+| `write-tests` | Model | Agents pad suites with low-value tests; force a named regression per test |
 | `debug-root-cause` | Model | Agents default to symptom patches; force root-cause process |
 | `do-it` | User | Entry router; playbooks Call leaf skills so humans don’t |
 | `create-verification-skill` | User | Generate project `verify-<app>` harness (complements verify-work policy) |

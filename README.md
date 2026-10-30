@@ -19,6 +19,7 @@ Single skill:
 ```bash
 npx skills add MattPua/agent-skills -s verify-work
 npx skills add MattPua/agent-skills -s living-docs
+npx skills add MattPua/agent-skills -s write-tests
 npx skills add MattPua/agent-skills -s debug-root-cause
 npx skills add MattPua/agent-skills -s do-it
 npx skills add MattPua/agent-skills -s create-verification-skill
@@ -41,6 +42,7 @@ The model may reach for these on its own, and you can also call them by name.
 | --- | --- |
 | [`verify-work`](skills/verify-work/SKILL.md) | Prove changes with concrete runtime evidence before claiming done |
 | [`living-docs`](skills/living-docs/SKILL.md) | Capture repeating lessons as anti-patterns the same turn as the fix |
+| [`write-tests`](skills/write-tests/SKILL.md) | Write or prune tests so each one names the regression it catches |
 | [`debug-root-cause`](skills/debug-root-cause/SKILL.md) | Trace failures to root cause; fix there, not symptoms |
 | [`critique-me`](skills/critique-me/SKILL.md) | Pre-merge review and fixer for a diff or PR |
 | [`blast-radius`](skills/blast-radius/SKILL.md) | Find what a change breaks outside its diff; prove the one safety fact by running code |
@@ -72,6 +74,7 @@ skills/
   do-it/                        # user — entry / playbooks
   verify-work/                  # model
   living-docs/                  # model
+  write-tests/                  # model
   debug-root-cause/             # model
   create-verification-skill/    # user — generate verify-<app>
   maintain-verification-skill/  # user — upkeep verify-<app>

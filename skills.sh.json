@@ -5,13 +5,16 @@
     {
       "title": "Entry",
       "description": "One playbook router that runs the other skills.",
-      "skills": ["do-it"]
+      "skills": [
+        "do-it"
+      ]
     },
     {
       "title": "Quality",
       "description": "Prove work and keep agent docs alive.",
       "skills": [
         "verify-work",
+        "write-tests",
         "living-docs",
         "debug-root-cause",
         "create-verification-skill",
@@ -21,7 +24,12 @@
     {
       "title": "Review",
       "description": "Explicit review and prose passes.",
-      "skills": ["critique-me", "blast-radius", "adversarial-review", "unslop"]
+      "skills": [
+        "critique-me",
+        "blast-radius",
+        "adversarial-review",
+        "unslop"
+      ]
     }
   ]
 }
