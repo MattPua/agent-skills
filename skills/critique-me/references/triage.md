@@ -24,6 +24,18 @@ When the diff introduces a pattern that should be a standing rule but isn’t co
 
 Deepen when the diff adds any helper, component, query, schema, constant, type, or parser — new or moved. Grep the whole repo and installed dependencies for equivalents (not just other files in the diff); apply when clear. Never describe new code as “removing a duplicate” without that search.
 
+Name and behaviour searches miss shapes. Also search **by structure**:
+
+- **Unnamed shapes count.** Inline object types (props, params, column/JSON types, type fields) are inventory, not just named symbols.
+- **Same fields, new name.** Grep a new type's distinctive field combination across shared types, the schema, and every app. Equal → reuse; superset/subset → extend (`&`, `Pick`, `Omit`), don't redeclare.
+- **Repeated inline shape** in two or more places → one named type in the shared types module.
+- **Consumer-named shape.** A type named for one component whose fields describe a general entity (address, hours, contact) → name it for the entity; consumers derive from it.
+- **Implementation-derived entity type** (`ReturnType<typeof fn>`, `typeof value`) standing in for a domain entity → give the entity its own type.
+- **Hand-rolled utility types** → look for an exported equivalent first (e.g. a transaction type from the DB package).
+- **Copy-only component.** Diff a new component against same-role siblings (same file-name pattern). Differs only in strings, ids, or row type → one parameterized component.
+
+A reuse pass that reports no structural search is incomplete; list it under triage skips.
+
 ## Threat model
 
 When auth surfaces, public APIs, tokens/keys, uploads, SSRF-ish fetches, or expanded authorization change:
