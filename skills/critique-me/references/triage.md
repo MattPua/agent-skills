@@ -13,6 +13,14 @@ When the diff includes agent guide, standing rules, skills, anti-patterns, archi
 - Correct placement; no thin duplicates; prefer extend over new file.
 - Flag mis-placement as Warnings.
 
+## Doc drift → living-docs
+
+Runs on every diff that changes behavior (skip docs-only, copy/style-only, tests-only). Find docs that describe the changed area: the binding's docs table, architecture maps, `docs/`, READMEs, and grep for the changed route/table/function/flag names across `*.md`.
+
+- A doc whose statement is now false, or that describes this area and omits the new behavior (new status code, column, limit, flow step, client impact) → **Warning: Doc drift**, quoting the stale line and the fact that replaced it.
+- Draft the update in **Agent config follow-up** (file + section + new text) for the invoking agent; don't edit agent docs yourself.
+- Report which docs were checked even when none drifted.
+
 ## Agent config follow-up → living-docs
 
 When the diff introduces a pattern that should be a standing rule but isn’t covered:
