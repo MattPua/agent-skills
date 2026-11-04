@@ -30,3 +30,17 @@ Challenge necessity and complexity.
 - Abstractions with a single call site?
 - Config/flexibility without a concrete second use case?
 - Simplest path to the outcome, or the most thorough-feeling one?
+
+## Security
+
+Challenge trust boundaries. Assume the author believes it is safe; try to show it is not.
+
+- For each new or changed entry point: who is the lowest-trust caller, and what input do they control?
+- Which check should stop them? Is it the **same** check sibling paths use (list vs export, sync vs async, single vs bulk, create vs restore)?
+- Does one component assume a guarantee the previous one does not give (scope, normalization, type, length)?
+- Stored values reused later as a path, URL, query, template, or HTML?
+- Check-then-act under concurrency; state-machine steps skipped or replayed; defaults when config is missing or a flag is off?
+- Does an error, timing, or search result reveal records the caller cannot read?
+- Model or tool output reaching a sink, or an agent acting with more authority than its user?
+
+Report only findings that name the principal, input, missing control, affected resource, and concrete result, with a `file:line` trace. Anything that depends on a fact outside the repo (proxy, provider, deploy config) → mark **needs validation**, name the fact, no severity. Missing best practice with nothing affected is not a finding.

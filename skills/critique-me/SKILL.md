@@ -3,7 +3,7 @@ name: critique-me
 description: "Pre-merge review and fixer for a diff or PR: triage, apply clear fixes, report what's left. Use before merging or committing a non-trivial change, after finishing a feature or multi-file fix, or when the user asks for a review or critique."
 metadata:
   author: mattpua
-  version: "1.14.0"
+  version: "1.15.0"
 ---
 
 # critique-me
@@ -43,7 +43,7 @@ Matched specialists are **required**, not optional. A matched specialist that di
 | --- | --- | --- |
 | Reuse | adds/moves any type (named or inline), component, helper, query, schema, constant, parser | triage → Reuse (name **and** structural search) |
 | Blast radius | changes a shared type/response shape, URL/slug/key scheme, schema/migration/backfill, public API, flag | `blast-radius` skill |
-| Security | touches auth, public endpoints, keys/tokens, uploads, outbound fetches, data exposure | triage → Threat model |
+| Security | touches auth, public endpoints, keys/tokens, uploads, outbound fetches, data exposure | triage → Threat model → `references/security.md` |
 | Tests | changes branching logic, or adds/changes tests | `write-tests` skill (value gate), else triage → Tests |
 | Sibling parity | adds a page/flow/component that has a same-role sibling, or behaviour that varies by role/mode/state | triage → Sibling parity |
 

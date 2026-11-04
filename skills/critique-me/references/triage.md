@@ -62,11 +62,12 @@ When the diff adds a page, flow, or component that has a same-role sibling elsew
 
 ## Threat model
 
-When auth surfaces, public APIs, tokens/keys, uploads, SSRF-ish fetches, or expanded authorization change:
+When auth surfaces, public APIs, tokens/keys, uploads, SSRF-ish fetches, exports/imports, share links, agent tool calls, or expanded authorization change:
 
 1. In-process authz from the project binding always.
-2. Delegate to a security agent/skill only if installed.
-3. Otherwise deepen in-process; put ship posture in the report.
+2. Delegate to a security agent/skill only if installed; give it `references/security.md` as the bar for what counts as a finding.
+3. Otherwise run `references/security.md` in-process: candidate gate, method, and the "Where bugs hide" sections that match the diff.
+4. Report each finding with its status (confirmed / needs validation) and severity per that file; put ship posture in the report.
 
 ## Product / performance / build simplicity
 

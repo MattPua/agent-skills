@@ -3,7 +3,7 @@ name: adversarial-review
 description: "Opposite-model adversarial review: challenge a diff or plan through a different model's CLI and return a verdict only, no edits. Use when a change is large, risky, or contested, when a pre-merge review wants a second opinion, or when the user asks for a cross-model challenge."
 metadata:
   author: mattpua
-  version: "1.1.0"
+  version: "1.2.0"
   credit: Adapted from poteto/noodle adversarial-review (https://www.skills.sh/poteto/noodle/adversarial-review)
 ---
 
@@ -34,6 +34,8 @@ Opposite of **critique-me** (same-model review + auto-fix). Use this when you wa
 | Small | < 50 lines, 1–2 files | Skeptic |
 | Medium | 50–200 lines, 3–5 files | Skeptic + Architect |
 | Large | 200+ lines or 5+ files | Skeptic + Architect + Minimalist |
+
+**Add Security** at any size when the diff touches auth, permissions, public endpoints, tokens/keys, uploads, outbound fetches, exports/imports, share links, or agent tool calls.
 
 ## Opposite CLI
 
