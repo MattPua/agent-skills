@@ -3,7 +3,7 @@ name: critique-me
 description: "Pre-merge review and fixer for a diff or PR: triage, apply clear fixes, report what's left. Use before merging or committing a non-trivial change, after finishing a feature or multi-file fix, or when the user asks for a review or critique."
 metadata:
   author: mattpua
-  version: "1.18.1"
+  version: "1.18.2"
 ---
 
 # critique-me
@@ -45,7 +45,7 @@ Matched specialists are **required**, not optional. A matched specialist that di
 | Security | touches auth, public endpoints, keys/tokens, uploads, outbound fetches, data exposure | triage → Threat model → `references/security.md` |
 | Tests | changes branching logic, or adds/changes tests | `write-tests` skill (value gate), else triage → Tests |
 | Sibling parity | adds a page/flow/component that has a same-role sibling, or behaviour that varies by role/mode/state | triage → Sibling parity |
-| Smells | touches 2+ files or adds 50+ lines (any non-trivial diff) | `code-smells` skill — reads changed files whole, side by side, for what per-piece review misses (its families). Keep it separate from in-process checks: it catches smells the reviewer's own pass doesn't |
+| Smells | touches 2+ files or adds 50+ lines (any non-trivial diff) | `code-smells` skill — reads changed files whole, side by side, for code that looks right but isn't: what a human reviewer would definitely point out and the agent's own pass keeps missing. Always its own subagent |
 
 The project binding maps each specialist to an installed agent or skill; unmapped ones use the checklist above in a generic subagent.
 
