@@ -3,7 +3,7 @@ name: critique-me
 description: "Pre-merge review and fixer for a diff or PR: triage, apply clear fixes, report what's left. Use before merging or committing a non-trivial change, after finishing a feature or multi-file fix, or when the user asks for a review or critique."
 metadata:
   author: mattpua
-  version: "1.18.2"
+  version: "1.18.3"
 ---
 
 # critique-me
@@ -53,7 +53,7 @@ The project binding maps each specialist to an installed agent or skill; unmappe
 
 Over-built is as wrong as under-built. For each piece of handling in the diff (retries, backoff, caches, dedupe, staleness caps, fallback tiers, edge-case branches, config knobs), ask: **will this realistically happen here, and what breaks if we don't handle it?** If the answer is “rarely, and nothing serious,” remove it (auto-fix when the removal is local). Don't suggest new hardening for theoretical cases either — only for failures that will actually occur at this project's scale.
 
-**Subtract before you add** (from pstack `subtract-before-you-add` / `laziness-protocol`): prefer the change that removes something — a dead path, a helper column, a duplicate formatter, a second file — over one that adds a layer. One source of truth per decision. A smaller diff beats elegant boilerplate. Flag additions that a deletion would have made unnecessary.
+**Subtract before you add**: prefer the change that removes something — a dead path, a helper column, a duplicate formatter, a second file — over one that adds a layer. One source of truth per decision. A smaller diff beats elegant boilerplate. Flag additions that a deletion would have made unnecessary.
 
 ## Comments
 

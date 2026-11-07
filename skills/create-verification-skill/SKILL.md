@@ -3,8 +3,7 @@ name: create-verification-skill
 description: "Generate a project-local verify-<app> / verify-<surface> skill that launches, drives, and proves the real app, plus a feature map. Use when something needs runtime verification and no project verify-* skill covers that app or surface, or when the user asks for a verification harness."
 metadata:
   author: mattpua
-  version: "1.2.0"
-  credit: Adapted from cursor/plugins pstack create-verification-skill
+  version: "1.2.1"
 ---
 
 # create-verification-skill
@@ -29,7 +28,7 @@ Broken checkout → fix or report precisely before generating. Verification scaf
 
 ## 2. Generate the skill
 
-Write under the project skills root (prefer `.agents/skills/verify-<app>/`, else `.cursor/skills/verify-<app>/`):
+Write under the project skills root (`.agents/skills/verify-<app>/`):
 
 `SKILL.md` with frontmatter `name: verify-<app>` and a description that names the app, surface, and when to use it.
 

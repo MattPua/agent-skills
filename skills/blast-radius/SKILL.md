@@ -3,8 +3,7 @@ name: blast-radius
 description: "Find what a change could break outside its own diff before it ships, and prove the one fact it's safe because of by running real code. Use before merging a change that touches a shared type, a URL or slug scheme, a DB schema or migration, a public API or response shape, a config or feature flag, or anything other code reads by value rather than by symbol; also for \"what could this break\" or a small diff you don't trust."
 metadata:
   author: mattpua
-  version: "1.1.0"
-  credit: Adapted from cursor/plugins pstack blast-radius (https://github.com/cursor/plugins/tree/main/pstack/skills/blast-radius)
+  version: "1.1.1"
 ---
 
 # blast-radius
