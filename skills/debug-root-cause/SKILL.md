@@ -7,7 +7,7 @@ description: >-
   still failing, flaky, can't reproduce.
 metadata:
   author: mattpua
-  version: "1.1.0"
+  version: "1.1.1"
   credit: Inspired by poteto/noodle debugging (https://www.skills.sh/poteto/noodle/debugging)
 ---
 
@@ -34,7 +34,7 @@ Trace every problem to its root cause. Symptom patches (extra guards, retries, b
 
 ## Two fixes failed? Attack the premise
 
-When two or more fixes that rest on the same assumption have failed the same check, suspect the assumption, not the fixes (from pstack `principle-attack-the-premise`).
+When two or more fixes that rest on the same assumption have failed the same check, suspect the assumption, not the fixes.
 
 1. **Write the premise down** — the one sentence every failed fix assumed ("the click isn't registering", "the backfill key matches").
 2. **Test it before the next fix.** Make an observation that would come out differently if the premise were false (log the real value, reset state and retry from clean, run the step in isolation).

@@ -3,7 +3,7 @@ name: living-docs
 description: "Capture durable, likely-to-repeat lessons as anti-patterns the same turn as the fix. Use when the user corrects you, the same class of mistake repeats, verify-work finds a gap, docs and code diverge, or when placing new agent rules/skills/launchers."
 metadata:
   author: mattpua
-  version: '1.8.0'
+  version: '1.8.1'
 ---
 
 # living-docs
@@ -15,7 +15,7 @@ Keep agent-facing docs alive so the next session does not relearn the same lesso
 1. Decide if the lesson will **probably repeat as an agent mistake class**. Default to **skip**. One-offs → short “no doc — won’t repeat” and stop.
 1a. **Route by kind.** A correction about code shape that any project would make (duplication, reinvention, unnamed concept, needless layer, cast, dead branch, comment noise, disproportion) is a **code smell**: add the before/after to `code-smells` → `references/examples.md` under its family (upstream), and stop. Anti-patterns are for **project and product decisions** (behavior, copy, policy, contracts, platform quirks). Mechanical bans go to the linter.
 2. Search matching + sibling anti-pattern topics for the same _class_. Prefer strengthen/merge over add.
-2a. **Fix the class at the highest level that works**, prose last (from pstack `correct`). Assume the next agent sees only the files it opened and copies the nearest example:
+2a. **Fix the class at the highest level that works**, prose last. Assume the next agent sees only the files it opened and copies the nearest example:
     1. **Architecture** — one owner per piece of state, one supported way per task, shared modules instead of copies; delete the old way an agent would copy.
     2. **Types** — make the bad state unwritable.
     3. **Lint / CI check** whose error names the file or function to use instead.
