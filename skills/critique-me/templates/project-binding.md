@@ -53,7 +53,7 @@ Only list skills that are **installed** in this repo (or mark `optional — skip
 ## Reuse — deepen when
 
 - Any new or moved helper, component, query, schema, constant, type, or parser
-- Search `{{reuse-search-roots}}` and installed dependencies; can't delegate → run the reuse procedure in-process
+- Search `{{reuse-search-roots}}` and installed dependencies (in-process; Reuse is not a subagent)
 
 ## Specialists
 
@@ -61,7 +61,6 @@ Map each critique-me specialist to what this repo has installed (agent, skill, o
 
 | Specialist | Agent / skill here | Extra project checks |
 | --- | --- | --- |
-| Reuse | `{{reuse-agent}}` | `{{reuse-extra}}` |
 | Blast radius | `blast-radius` | |
 | Security | `{{security-agent}}` | |
 | Tests | `{{test-agent}}` | `{{test-extra}}` |

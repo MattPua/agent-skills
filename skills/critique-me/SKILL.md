@@ -3,7 +3,7 @@ name: critique-me
 description: "Pre-merge review and fixer for a diff or PR: triage, apply clear fixes, report what's left. Use before merging or committing a non-trivial change, after finishing a feature or multi-file fix, or when the user asks for a review or critique."
 metadata:
   author: mattpua
-  version: "1.17.0"
+  version: "1.18.0"
 ---
 
 # critique-me
@@ -11,8 +11,6 @@ metadata:
 Pre-merge **review and fixer**. Not the default verify gate — implementing agents must already follow **verify-work**.
 
 Auto-fix clear, local issues in changed application code. Prefer simplify over abstract.
-
-Opposite-model challenge with **no edits** → invoke **adversarial-review** (separate skill). Do not fold cross-model CLI review into this pass.
 
 ## Process
 
@@ -23,6 +21,7 @@ Opposite-model challenge with **no edits** → invoke **adversarial-review** (se
 4a. **Blast radius** is a specialist: it runs when the diff changes something other code reads by value (a shared type or response shape, how a URL/slug/key is built, a DB schema/migration/backfill, a public API, a config or flag) and proves its one safety fact with the `blast-radius` skill.
 5. **Authz / standards** — run the project binding checklist in-process always.
 5a. **Comments** — in-process on every diff that adds or edits comments (see Comments). Not a specialist and not triage-gated.
+5b. **Reuse** — in-process when the diff adds or moves any type (named or inline), component, helper, query, schema, constant or parser: triage → Reuse, name **and** structural search across the whole repo. Not a subagent: it is grep plus judgment and you already hold the diff. A reuse pass that reports no structural search is incomplete → Warning.
 6. **Auto-fix** — clear bugs, rule violations, obvious reuse/YAGNI/trims and speculative robustness (see Right-sized scope) in app code. Do not edit agent docs; hand those to the invoking agent via living-docs.
 7. **Verify** — typecheck/tests on touched paths when feasible; revert failed fixes.
 8. **Report** — Fixes applied; Critical / Warnings / Suggestions (Fixed / Deferred / Report-only); Skills applied; docs checked for drift; triage skip reasons; Agent config follow-up when required.
@@ -37,17 +36,16 @@ Matched specialists are **required**, not optional. A matched specialist that di
 - **Evidence, not verdicts.** Each report lists what it searched or compared (commands, files, symbols) and what it found. "Looks fine" with no evidence → incomplete → Warning.
 - **Parallel, scoped.** Give each one the diff, the changed-file list, and only its checklist.
 - **No subagents available** (or already inside one) → run each matched checklist in-process, one after another, and say so in the report.
-- **Skip all** for docs-only, copy/style-only, or isolated one-line changes; say so in the report. Tests-only diffs skip every specialist except Tests.
+- **Skip all** for docs-only, copy/style-only, or small diffs (under ~50 changed lines) that touch no auth, public endpoint, schema/migration, shared type/response shape or flag; run the in-process checks only and say so in the report. Tests-only diffs skip every specialist except Tests.
 - **Tests reads whole files.** The Tests specialist gets every touched test file in full, not just the hunks, and runs `write-tests` → Overlap across it. Duplication builds up across rounds; a hunk-only review never sees it. Overlapping existing tests in a touched file are in scope (exception to Only changed code).
 
 | Specialist | Runs when the diff… | Checklist |
 | --- | --- | --- |
-| Reuse | adds/moves any type (named or inline), component, helper, query, schema, constant, parser | triage → Reuse (name **and** structural search) |
 | Blast radius | changes a shared type/response shape, URL/slug/key scheme, schema/migration/backfill, public API, flag | `blast-radius` skill |
 | Security | touches auth, public endpoints, keys/tokens, uploads, outbound fetches, data exposure | triage → Threat model → `references/security.md` |
 | Tests | changes branching logic, or adds/changes tests | `write-tests` skill (value gate), else triage → Tests |
 | Sibling parity | adds a page/flow/component that has a same-role sibling, or behaviour that varies by role/mode/state | triage → Sibling parity |
-| Smells | touches 2+ files or adds 50+ lines (any non-trivial diff) | `code-smells` skill — reads changed files whole, side by side |
+| Smells | touches 2+ files or adds 50+ lines (any non-trivial diff) | `code-smells` skill — architectural shape across the changed files read whole (needless layers, unnamed concepts, wrong layer, size out of proportion). Not Reuse: Reuse asks "does this already exist?", Smells asks "is this built the right shape?" |
 
 The project binding maps each specialist to an installed agent or skill; unmapped ones use the checklist above in a generic subagent.
 
