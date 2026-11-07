@@ -25,6 +25,7 @@ npx skills add MattPua/agent-skills -s do-it
 npx skills add MattPua/agent-skills -s create-verification-skill
 npx skills add MattPua/agent-skills -s maintain-verification-skill
 npx skills add MattPua/agent-skills -s critique-me
+npx skills add MattPua/agent-skills -s code-smells
 npx skills add MattPua/agent-skills -s blast-radius
 npx skills add MattPua/agent-skills -s adversarial-review
 npx skills add MattPua/agent-skills -s unslop
@@ -45,6 +46,7 @@ The model may reach for these on its own, and you can also call them by name.
 | [`write-tests`](skills/write-tests/SKILL.md) | Write or prune tests so each one names the regression it catches |
 | [`debug-root-cause`](skills/debug-root-cause/SKILL.md) | Trace failures to root cause; fix there, not symptoms |
 | [`critique-me`](skills/critique-me/SKILL.md) | Pre-merge review and fixer for a diff or PR |
+| [`code-smells`](skills/code-smells/SKILL.md) | Find code that passes piece-by-piece review but is wrong as a whole |
 | [`blast-radius`](skills/blast-radius/SKILL.md) | Find what a change breaks outside its diff; prove the one safety fact by running code |
 | [`adversarial-review`](skills/adversarial-review/SKILL.md) | Opposite-model challenge; verdict only, no edits |
 | [`create-verification-skill`](skills/create-verification-skill/SKILL.md) | Generate project-local `verify-<app>` harness + feature map |

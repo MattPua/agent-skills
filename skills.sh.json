@@ -26,6 +26,7 @@
       "description": "Explicit review and prose passes.",
       "skills": [
         "critique-me",
+        "code-smells",
         "blast-radius",
         "adversarial-review",
         "unslop"

@@ -46,6 +46,7 @@ Operative steps name the **Skill tool** and the skill: `Call the Skill tool with
 | `create-verification-skill` | User | Generate project `verify-<app>` harness (complements verify-work policy) |
 | `maintain-verification-skill` | User | Upkeep that harness + feature map |
 | `critique-me` | User | Explicit pre-merge review + auto-fix; deep, expensive |
+| `code-smells` | Model | Agents review one piece at a time; smells live between pieces |
 | `adversarial-review` | User | Opposite-model challenge; review-only (must not merge into critique-me) |
 | `unslop` | User | Explicit prose edit pass |
 
