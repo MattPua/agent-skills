@@ -3,7 +3,7 @@ name: critique-me
 description: "Pre-merge review and fixer for a diff or PR: triage, apply clear fixes, report what's left. Use before merging or committing a non-trivial change, after finishing a feature or multi-file fix, or when the user asks for a review or critique."
 metadata:
   author: mattpua
-  version: "1.15.0"
+  version: "1.16.0"
 ---
 
 # critique-me
@@ -37,7 +37,8 @@ Matched specialists are **required**, not optional. A matched specialist that di
 - **Evidence, not verdicts.** Each report lists what it searched or compared (commands, files, symbols) and what it found. "Looks fine" with no evidence → incomplete → Warning.
 - **Parallel, scoped.** Give each one the diff, the changed-file list, and only its checklist.
 - **No subagents available** (or already inside one) → run each matched checklist in-process, one after another, and say so in the report.
-- **Skip all** for docs-only, copy/style-only, tests-only, or isolated one-line changes; say so in the report.
+- **Skip all** for docs-only, copy/style-only, or isolated one-line changes; say so in the report. Tests-only diffs skip every specialist except Tests.
+- **Tests reads whole files.** The Tests specialist gets every touched test file in full, not just the hunks, and runs `write-tests` → Overlap across it. Duplication builds up across rounds; a hunk-only review never sees it. Overlapping existing tests in a touched file are in scope (exception to Only changed code).
 
 | Specialist | Runs when the diff… | Checklist |
 | --- | --- | --- |
