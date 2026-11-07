@@ -34,9 +34,9 @@ Real cases a human caught after the agent's own review passed. Short form: what 
 - A separate package for a data script. → A `scripts/` folder.
 - Several new columns (and a migration) for loosely structured, optional data. → One JSON column for extras.
 - A migration or backfill script for a one-time data move. → Run it once locally and copy the data.
-- A server function that fetched the footer's city list from the database. → A hard-coded list.
+- A server function that fetched a short, fixed list (footer links) from the database. → A hard-coded list.
 - package.json scripts for commands run once.
-- Two tables (settings + challenges) where one table with a status would do.
+- Two tables (a record + its pending-verification twin) where one table with a status would do.
 - Migrations split across several files for one change set.
 - A new types file (or package export) for types nothing outside the implementation imports. → Keep them unexported beside the code.
 
@@ -64,15 +64,15 @@ Real cases a human caught after the agent's own review passed. Short form: what 
 
 ## Dead branch / history
 
-- "Clinic without members" branches in several services, after the model guaranteed every clinic has members. → Delete them.
+- "Group without members" branches in several services, after the model guaranteed every group has members. → Delete them.
 - A dependency left in package.json after its tests were removed.
 - An access-check helper with no remaining callers.
-- A derived field duplicated on each row (`log.patient.calendarType`) next to the same field at the top level.
+- A derived field duplicated on each row (`row.owner.kind`) next to the same field at the top level.
 - After a data-model change, seeds and fixtures patched to keep their old shape, deriving the new entities as side effects. → Rewrite them around the new model: parents first, referenced by key, new shapes covered.
 
 ## Noise
 
-- Docstrings like "Admin only: a user's signed-in devices…" over a function named `listAdminUserSessions`.
+- Docstrings like "Admin only: lists a user's sessions" over a function named `listAdminUserSessions`.
 - Comments on schema columns restating the column name.
 - Auditing "admin viewed a list" — nobody will read it.
 - Card descriptions that repeat the card title.
