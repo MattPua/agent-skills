@@ -27,6 +27,7 @@ Real cases a human caught after the agent's own review passed. Short form: what 
 - `sessionId` and `tokenId` passed side by side through several functions. → One named type.
 - `lat?: number; lng?: number` repeated on several shapes. → A `LatLng` primitive.
 - Several audit-action constants for the same operation under two naming schemes ("two sets"). → One set.
+- Routes, files, or keys named for one variant of a dimension that will vary (`/connect-google`, `/signup-google`, `googleStartHref`). → Make the dimension a path segment or parameter (`/oauth/google/connect`, `/oauth/<provider>/signup`) so the next variant slots in beside it.
 
 ## Needless layer
 

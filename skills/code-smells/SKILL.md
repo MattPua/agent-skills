@@ -3,7 +3,7 @@ name: code-smells
 description: "Find code that passes review piece by piece but looks wrong as a whole: repeated moves, reinvented helpers, unnamed concepts, needless layers, type lies, noise, and size out of proportion. Use after finishing a feature or multi-file change, inside a pre-merge review, when the user asks what's sus or over-complicated, or when the user asks you to fix something that was working but badly shaped."
 metadata:
   author: mattpua
-  version: "1.0.1"
+  version: "1.0.2"
 ---
 
 # code-smells
