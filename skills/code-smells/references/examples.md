@@ -68,6 +68,7 @@ Real cases a human caught after the agent's own review passed. Short form: what 
 - A whole table column for a status most rows share. → Show an icon only for the exception.
 - `useEffect(() => setState(prop))` to mirror props or query data. → Derive in render, or remount with a `key`.
 - A behavior every caller of a shared component needs (fallback link, label, loading state) made an opt-in prop; some callers never pass it. → Make it the default; a prop only for real exceptions.
+- One `useState` per lazily imported module or loaded piece (each set once, in the same async block) plus an `!a || !b || …` readiness guard that grows with every addition. → One loader that returns an object, one state slot, `if (!lib)`; the state type comes from the loader instead of `any`.
 - A lookup that resolves a path step by step (state → city → item) but returns `null` on any miss, so callers run it again, or fetch more data, to learn which step failed. → Return the match with how far it got (`{ match, stateName, cityName }`); callers never re-resolve.
 
 ## Dead branch / history
