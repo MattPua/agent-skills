@@ -56,6 +56,7 @@ Real cases a human caught after the agent's own review passed. Short form: what 
 
 ## Type lie
 
+- A field typed `startedAt?: string | Date | null` plus an `instanceof Date` branch, when its only producer is a JSON API that always sends `string | null`. → Type it `string | null` at the response schema, drop the branch.
 - `serialized as never` to get past a mismatch. → Fix the declared type.
 - `onValueChange={(v) => v != null && setX(v)}` when the component's type could carry `undefined` straight through.
 - `typeof raw === 'number' ? … : typeof raw === 'string' && raw !== '' ? Number(raw) : …` on a value with a known type. → Parse once at the boundary with a schema.

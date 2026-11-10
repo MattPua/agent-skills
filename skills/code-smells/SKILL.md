@@ -3,7 +3,7 @@ name: code-smells
 description: "Find code that passes review piece by piece but looks wrong as a whole: repeated moves, reinvented helpers, unnamed concepts, needless layers, type lies, noise, and size out of proportion. Use after finishing a feature or multi-file change, inside a pre-merge review, when the user asks what's sus or over-complicated, or when the user asks you to fix something that was working but badly shaped."
 metadata:
   author: mattpua
-  version: "1.0.6"
+  version: "1.0.7"
 ---
 
 # code-smells
@@ -30,7 +30,7 @@ A smell is code that works and passes a per-line review, but that a careful huma
 | **Unnamed concept** | Literals or ad-hoc shapes that mean one domain thing, spread with no list or type; paired fields that always travel together | "What would a person call this?" → one list / type / primitive as the source of truth |
 | **Needless layer** | New file, export, package, table, column, migration, script, config, or abstraction with one consumer or one use | "What breaks if this is folded into its caller or an existing home?" Nothing → fold it |
 | **Theoretical robustness** | Handling, retries, options, or fetches for cases that won't happen at this scale; dynamic lookups for static data | "Will this realistically happen here, and what breaks if we don't handle it?" |
-| **Type lie** | Casts (`as never`, `as unknown as`, `!`), runtime `typeof` checks on already-typed values, guards inside callbacks the type already rules out | "Why doesn't the type already say this?" → fix the type, not the call site |
+| **Type lie** | A type looser than the values that really flow through it: union members, `null`/`undefined`/optional the producer never emits (or both `null` and `undefined` for one absence), `unknown`/`any` where a real type exists. Its symptoms: casts (`as never`, `as unknown as`, `!`), `typeof`/`instanceof` checks and guards on already-typed values | "What does the producer actually send?" → make the type as explicit and slim as that, at the boundary; then delete the guards |
 | **Wrong shape** | Data structure or API that fights how it's used: array for membership, list where a map is read, many columns where one structured field fits, side-effect sync for derived state | "How is this read?" → pick the shape for that read |
 | **Dead branch / history** | Special cases, flags, fields, or fallbacks whose reason isn't in today's model; leftovers after a removal | "Can I justify this branch from current code alone?" |
 | **Noise** | Comments restating code, labels that repeat the heading, logging/auditing of things nobody will read | "Does deleting it lose anything for a reader or operator?" |
