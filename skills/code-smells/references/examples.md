@@ -10,6 +10,7 @@ Real cases a human caught after the agent's own review passed. Short form: what 
 - The rule for "who becomes owner" written in both the admin list and the approval code. → One function both call.
 - An integration file with an emails test, a notifications test, and an audit test that each rebuilt the same scenario. → One test, three asserts.
 - Database constraint / unique-violation parsing repeated at each call site. → One shared helper.
+- A cross-cutting step (timing, instrumentation, "do X after N seconds") written by hand at each call site, so every new caller must remember it. → One wrapper, or put it in the layer every call already goes through.
 
 ## Reinvented wheel
 
@@ -28,6 +29,7 @@ Real cases a human caught after the agent's own review passed. Short form: what 
 - `lat?: number; lng?: number` repeated on several shapes. → A `LatLng` primitive.
 - Several audit-action constants for the same operation under two naming schemes ("two sets"). → One set.
 - Routes, files, or keys named for one variant of a dimension that will vary (`/connect-google`, `/signup-google`, `googleStartHref`). → Make the dimension a path segment or parameter (`/oauth/google/connect`, `/oauth/<provider>/signup`) so the next variant slots in beside it.
+- A general shape named after its first consumer (`adminDirectoryCoordinateSchema`, clinic-only opening-hours schema, a per-form address shape, a local `'women' | 'men'` union) while other features need the same thing. → Name it for what it is (`coordinateSchema`, `addressSchema`, `Gender`) in the shared package; search for an existing one first.
 
 ## Needless layer
 
@@ -46,6 +48,10 @@ Real cases a human caught after the agent's own review passed. Short form: what 
 - A full lookup integration built before sampling whether the source had useful data. → Sample first.
 - A multi-step verification flow where a link with a code was enough.
 - Defensive handling for states the types and DB constraints already rule out.
+- A cache in front of small or rarely-read data. → Read it each time; cache only after a measured cost.
+- A fetch or lookup for a short list that never changes (countries, states). → Hard-code it.
+- A feature flag with one value everywhere and no plan to flip it. → Delete the flag and keep the live branch.
+- A step the user performs that the system could do itself (click "send me a code" on a screen whose only job is entering that code; re-enter the password alongside a one-time code; confirm again after clicking a confirm link). → Do it automatically; ask for each factor once.
 
 ## Type lie
 
@@ -88,8 +94,13 @@ Real cases a human caught after the agent's own review passed. Short form: what 
 
 - Two directory pages with different filter bars and different empty states. → One filter component.
 - One option list shows subtitles; its sibling groups instead.
+- The same field (a location, a date) formatted differently in each table. → One formatter all tables use.
+- Page and sort kept in the URL on most list pages but in local state on one. → Match the siblings.
+- Sortable columns marked one way in one table and unmarked in another. → One header component.
+- Breadcrumbs or a two-column layout copied per entity type with small drifts. → One shared component, data passed in.
 
 ## Wrong layer
 
 - A database error message shown to the user. → Map internal failures to a generic message where errors cross into the response.
 - Feature-flag shapes null-checked in every reader. → Normalize once where the session is built.
+- Domain logic (token signing, email rendering, shared constants, generic helpers) written in the app when a package owns that domain. → Move it to that package and have the app pass only what it owns (secrets, ids, config).
