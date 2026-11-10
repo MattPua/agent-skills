@@ -30,6 +30,7 @@ Real cases a human caught after the agent's own review passed. Short form: what 
 - Several audit-action constants for the same operation under two naming schemes ("two sets"). → One set.
 - Routes, files, or keys named for one variant of a dimension that will vary (`/connect-google`, `/signup-google`, `googleStartHref`). → Make the dimension a path segment or parameter (`/oauth/google/connect`, `/oauth/<provider>/signup`) so the next variant slots in beside it.
 - A general shape named after its first consumer (`adminDirectoryCoordinateSchema`, clinic-only opening-hours schema, a per-form address shape, a local `'women' | 'men'` union) while other features need the same thing. → Name it for what it is (`coordinateSchema`, `addressSchema`, `Gender`) in the shared package; search for an existing one first.
+- One column name and enum on two tables after a bulk rename (a `memberType` on both the member and its organization), though the second table's values drive different rules. → A name per table (`organizationType`); after any bulk rename, re-read each hit and check the new name fits there.
 
 ## Needless layer
 
