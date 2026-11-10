@@ -1,47 +1,54 @@
 ---
 name: living-docs
-description: "Capture durable, likely-to-repeat lessons as anti-patterns the same turn as the fix. Use when the user corrects you, the same class of mistake repeats, verify-work finds a gap, docs and code diverge, or when placing new agent rules/skills/launchers."
+description: "Decide whether a correction earns a durable fix, and put it where it will fire (lint, types, test, review checklist) — prose last. Default is to write nothing. Use when the same class of mistake has been corrected before, the user asks to record a lesson, verify-work finds a gap, docs and code diverge, or when placing new agent rules/skills/launchers."
 metadata:
   author: mattpua
-  version: '1.8.1'
+  version: "2.0.0"
 ---
 
 # living-docs
 
-Keep agent-facing docs alive so the next session does not relearn the same lesson. Do not wait to be asked — “update the docs” from the user means this skill already failed.
+Most corrections are fixed in code and need no doc. Prose lists that agents are expected to read before writing code rarely prevent the next mistake; they mostly get written, not used. Write less, and put what you do write where it runs.
 
-## Process
+## Gate (default: write nothing)
 
-1. Decide if the lesson will **probably repeat as an agent mistake class**. Default to **skip**. One-offs → short “no doc — won’t repeat” and stop.
-1a. **Route by kind.** A correction about code shape that any project would make (duplication, reinvention, unnamed concept, needless layer, cast, dead branch, comment noise, disproportion) is a **code smell**: add the before/after to `code-smells` → `references/examples.md` under its family (upstream), and stop. Anti-patterns are for **project and product decisions** (behavior, copy, policy, contracts, platform quirks). Mechanical bans go to the linter.
-2. Search matching + sibling anti-pattern topics for the same _class_. Prefer strengthen/merge over add.
-2a. **Fix the class at the highest level that works**, prose last. Assume the next agent sees only the files it opened and copies the nearest example:
-    1. **Architecture** — one owner per piece of state, one supported way per task, shared modules instead of copies; delete the old way an agent would copy.
+Fix the code. Then write a durable lesson **only if all three hold**:
+
+1. **Evidence it repeats.** The same *class* was corrected before (earlier session, commit, review finding), or the user asks you to record it. "It will probably repeat" is a guess, not evidence. First-time corrections → no doc.
+2. **There is a place it will fire.** Use the first that works — assume the next agent sees only the files it opened and copies the nearest example:
+    1. **Architecture** — one owner per piece of state, one supported way per task; delete the old way an agent would copy.
     2. **Types** — make the bad state unwritable.
-    3. **Lint / CI check** whose error names the file or function to use instead.
+    3. **Lint / CI check** whose error names what to use instead.
     4. **Test** of the behavior.
-    5. **Prose rule** (steps 3–4 below) only for judgment calls nothing can enforce.
-    If a prose rule for this class already exists and the mistake happened again, that's the signal to move it up a level, not to reword it.
-3. Write class-level “don’t X; prefer Y.” No post-mortems, magic numbers, or one-surface archaeology. Tuned values live in code.
-4. Place the edit: anti-pattern topic, agent guide (invariants), or architecture map (topology). See `references/placement.md`.
-5. If the ban is mechanical, codify it in the project linter same turn and cite the rule on the anti-pattern line.
-6. Run the project’s near-dupe check if it has one. Reply: strengthened vs added (+ check passed). If skipped: say so.
+    5. **A step in a checklist that runs at the moment** — a review skill (e.g. critique-me, code-smells) or a verify skill's done-check. Not a list read "before writing code".
+    6. **Prose rule** — only for a judgment call none of the above can carry, and only if no prose rule for the class exists yet.
+3. **No existing prose rule for this class.** If one exists and the mistake happened anyway, the prose failed: move it up a level (2.1–2.5) or delete it. Do not reword it, extend it, or add a narrower sibling.
 
-**Skip (do not invent a rule) when any of these are true:**
+Reply in one line either way: what changed and where, or "no doc — <reason>".
 
-- Upstream / dependency bug with a workaround already in code (pins, shims, named helpers) — the code is the doc; next agent won’t re-derive the forensics
-- Mentions a specific GitHub issue, package version, stack frame, or one-time ceremony
-- Would only fire if someone deletes the shipped fix — that’s not a repeating mistake class
-- Explains *how we fixed it once* rather than a choice agents keep getting wrong in feature work
+## Route by kind
 
-**Add / strengthen only when:** the next session is likely to make the same *product/code choice* again (wrong API shape, inventing a parallel helper, skipping a shared primitive, etc.).
+- **Code shape** any project would hit (duplication, reinvention, unnamed concept, needless layer, cast, dead branch, comment noise, disproportion) → `code-smells` → `references/examples.md` under its family (upstream). Code-smells runs at review time, which is where these get caught.
+- **Mechanical ban** (import, package, JSX tag, identifier) → the project linter.
+- **Project/product decision** (behavior, copy, policy, contracts, platform quirks) → the project's review or verify checklist first; anti-pattern topic file only as 2.6.
+- **How the agent works** (scope, asking first, research before proposing) → one line in the agent guide (`AGENTS.md`), not a list.
 
-**Done when:** the durable lesson is in the right artifact (or explicitly skipped as a one-off), and the reply names what changed.
+## Never write
+
+- Upstream / dependency bugs with a workaround already in code — the code is the doc.
+- Anything naming a specific issue, package version, stack frame, file, feature, or copy from the case at hand.
+- Rules that only fire if someone reverses a shipped fix.
+- Post-mortems: how we fixed it once, tuned values, chat archaeology.
+- One-off taste calls (a rejected color, a removed subtitle) unless gate 1 holds.
 
 ## Pair with verify-work
 
-Skipped / impossible proof / new evidence class → tighten or add a row in the project's verify-work addons (or propose a base row upstream when any project would hit it), and Call the Skill tool with `"living-docs"` when the miss will repeat as an anti-pattern.
+Skipped / impossible proof / new evidence class → tighten or add a row in the project's verify-work addons (or propose a base row upstream when any project would hit it). That is a checklist that runs at the moment — it passes gate 2.
+
+## Placement
+
+See `references/placement.md`. Prefer extending an existing artifact; prefer deleting a failed rule over adding a new one.
 
 ## Setup
 
-Copy `templates/anti-patterns-index.md` and topic templates into the project. Add `templates/standing-rule.md.example` if you want always-loaded paths.
+Copy `templates/anti-patterns-index.md` and topic templates into the project if it wants a prose fallback. Add `templates/standing-rule.md.example` for an always-loaded pointer. Do not add a stop hook that forces a doc edit after corrections — it inflates writes without improving hit rate.

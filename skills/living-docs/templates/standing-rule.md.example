@@ -1,5 +1,5 @@
 # living-docs (standing)
 
-Follow the installed **living-docs** skill.
+Follow the installed **living-docs** skill. Default: fix the code, write no doc.
 
-When the user corrects a mistake, the same class of mistake repeats, verify-work finds a gap, or you place a new agent artifact: same-turn anti-patterns **only if they will probably repeat** (default skip — no upstream forensics / pins / “don’t delete the fix”). Prefer strengthen/merge. Linter bans when mechanical. Reply strengthened vs added, or skipped.
+Write a lesson only when the same class was corrected before (or the user asks), and put it where it fires: architecture → types → linter → test → review/verify checklist step → prose last. If a prose rule for the class already exists and the mistake happened anyway, move it up a level or delete it — don't reword or extend it. Reply in one line: what changed, or "no doc — <reason>".

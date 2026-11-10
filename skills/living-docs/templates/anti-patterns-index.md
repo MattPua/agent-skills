@@ -1,6 +1,6 @@
 # Anti-patterns index
 
-For mistakes that will **probably repeat** — not every possible wrong turn. Mechanical bans → project linter; cite the rule on the line when adding one. Judgment / UX stays prose.
+Prose fallback only. A line belongs here when the same class was corrected **before** and no linter, type, test, or review/verify checklist step can carry it (see living-docs gate). Mechanical bans → project linter.
 
 **Do not dump new lines into a flat mega-list.** Open the matching topic file. Search siblings → strengthen/merge → run `{{docs-dedupe-command}}` when available.
 
@@ -18,6 +18,7 @@ Add/remove rows to match the project. Keep verify-ship (or equivalent) always lo
 ## Dedupe gate
 
 1. Search matching + sibling topics for the same *class*.
-2. Prefer merge; add only if new.
-3. Prove with `{{docs-dedupe-command}}` when the project has one.
-4. Reply: strengthened vs added (+ check passed).
+2. Already here and the mistake happened anyway → the line failed: move it to a check or delete it. Don't reword or extend it.
+3. Add only if new and gate 1 (repeat evidence) holds.
+4. Prove with `{{docs-dedupe-command}}` when the project has one.
+5. Reply: moved / deleted / added, or no doc.
