@@ -3,7 +3,7 @@ name: critique-me
 description: "Pre-merge review and fixer for a diff or PR: triage, apply clear fixes, report what's left. Use before merging or committing a non-trivial change, after finishing a feature or multi-file fix, or when the user asks for a review or critique."
 metadata:
   author: mattpua
-  version: "1.18.3"
+  version: "1.18.4"
 ---
 
 # critique-me
@@ -22,9 +22,9 @@ Auto-fix clear, local issues in changed application code. Prefer simplify over a
 5. **Authz / standards** — run the project binding checklist in-process always.
 5a. **Comments** — in-process on every diff that adds or edits comments (see Comments). Not a specialist and not triage-gated.
 5b. **Reuse** — in-process when the diff adds or moves any type (named or inline), component, helper, query, schema, constant or parser: triage → Reuse, name **and** structural search across the whole repo. Not a subagent: it is grep plus judgment and you already hold the diff. A reuse pass that reports no structural search is incomplete → Warning.
-6. **Auto-fix** — clear bugs, rule violations, obvious reuse/YAGNI/trims and speculative robustness (see Right-sized scope) in app code. Do not edit agent docs; hand those to the invoking agent via living-docs.
+6. **Auto-fix** — clear bugs, rule violations, obvious reuse/YAGNI/trims and speculative robustness (see Right-sized scope) in app code. Do not edit agent docs; hand those to the invoking agent via living-docs. **Smells specialist findings are never auto-fixed:** ask the user per finding (question tool, per `code-smells` step 4) before editing; when critique-me itself runs as a subagent, list them under **Needs confirmation** so the invoking agent asks.
 7. **Verify** — typecheck/tests on touched paths when feasible; revert failed fixes.
-8. **Report** — Fixes applied; Critical / Warnings / Suggestions (Fixed / Deferred / Report-only); Skills applied; docs checked for drift; triage skip reasons; Agent config follow-up when required.
+8. **Report** — Fixes applied; Needs confirmation (smells); Critical / Warnings / Suggestions (Fixed / Deferred / Report-only); Skills applied; docs checked for drift; triage skip reasons; Agent config follow-up when required.
 
 **Done when:** the report covers every triage that matched, auto-fixes that were safe are applied, and handoffs are explicit.
 

@@ -3,7 +3,7 @@ name: code-smells
 description: "Find code that passes review piece by piece but looks wrong as a whole: repeated moves, reinvented helpers, unnamed concepts, needless layers, type lies, noise, and size out of proportion. Use after finishing a feature or multi-file change, inside a pre-merge review, when the user asks what's sus or over-complicated, or when the user asks you to fix something that was working but badly shaped."
 metadata:
   author: mattpua
-  version: "1.0.3"
+  version: "1.0.4"
 ---
 
 # code-smells
@@ -15,10 +15,11 @@ A smell is code that works and passes a per-line review, but that a careful huma
 1. **Widen the view.** Read every changed file in full, not the hunks. For each new symbol (type, helper, component, file, export, table/column, script, dependency) open its nearest siblings and callers. List: new symbols, new files, new deps, new casts, new comments, lines added vs. size of the feature.
 2. **Ask each family's question** (below) against that whole view. Read `references/examples.md` for calibration when a family is close.
 3. **Prove each finding.** A finding names its evidence: the existing symbol it duplicates, the N other sites that make the same move, the caller that proves a branch dead, the library already in the lockfile. No evidence → drop it.
-4. **Fix** the clear ones (smallest change, usually a deletion or a move to an existing home). Report the rest with the evidence and the fix direction.
-5. **Codify.** When the user had to point out a smell, add the before/after to `references/examples.md` under its family (or the project's copy). A new family only when no existing question would have caught it.
+4. **Confirm with the user before fixing.** Every finding, even a clear one, goes to the user first — through the harness's question tool (`AskUserQuestion` / `AskQuestion`) when it has one, prose otherwise. One question per finding (up to 4 per call): name the family, the evidence, and the proposed fix; options like **Fix as proposed** (first), **Different fix**, **Leave it**. Don't edit code for a finding until the user picks a fix. Running as a subagent (no question tool) → return the findings unfixed, marked **Needs confirmation**, and the caller asks.
+5. **Fix** what the user approved (smallest change, usually a deletion or a move to an existing home). Report the declined ones in a line each.
+6. **Codify.** When the user had to point out a smell, add the before/after to `references/examples.md` under its family (or the project's copy). A new family only when no existing question would have caught it.
 
-**Done when:** every family was asked, each finding has evidence and is fixed or reported, and user-caught smells are added as examples.
+**Done when:** every family was asked, each finding has evidence, was confirmed with the user, and is fixed or declined, and user-caught smells are added as examples.
 
 ## Families
 
