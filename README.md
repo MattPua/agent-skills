@@ -28,6 +28,7 @@ npx skills add MattPua/agent-skills -s critique-me
 npx skills add MattPua/agent-skills -s code-smells
 npx skills add MattPua/agent-skills -s blast-radius
 npx skills add MattPua/agent-skills -s unslop
+npx skills add MattPua/agent-skills -s teach-me
 ```
 
 ```bash
@@ -50,6 +51,7 @@ The model may reach for these on its own, and you can also call them by name.
 | [`create-verification-skill`](skills/create-verification-skill/SKILL.md) | Generate project-local `verify-<app>` harness + feature map |
 | [`maintain-verification-skill`](skills/maintain-verification-skill/SKILL.md) | Keep that harness/map honest (source + live pass) |
 | [`unslop`](skills/unslop/SKILL.md) | Remove AI writing patterns and restore human voice in prose |
+| [`teach-me`](skills/teach-me/SKILL.md) | Socratic tutoring to mastery: diagnostic, skill map, spaced review, final assessment |
 
 ## User-invoked
 
@@ -80,6 +82,7 @@ skills/
   maintain-verification-skill/  # user — upkeep verify-<app>
   critique-me/                  # user
   unslop/                       # user
+  teach-me/                     # model
 docs/crafting-skills.md
 skills.sh.json
 ```
