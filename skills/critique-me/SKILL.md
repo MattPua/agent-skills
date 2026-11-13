@@ -3,7 +3,7 @@ name: critique-me
 description: "Pre-merge review and fixer for a diff or PR: triage, apply clear fixes, report what's left. Use before merging or committing a non-trivial change, after finishing a feature or multi-file fix, or when the user asks for a review or critique."
 metadata:
   author: mattpua
-  version: "1.18.4"
+  version: "1.18.5"
 ---
 
 # critique-me
@@ -15,7 +15,7 @@ Auto-fix clear, local issues in changed application code. Prefer simplify over a
 ## Process
 
 1. **Load first** — this skill, then the project binding (search for `critique-me` binding / review notes). No binding → generics only; note that in the report.
-2. **Scope** — git diff or files the user named. Ask if unclear. Confirm non-empty.
+2. **Scope** — files or commits the user named; otherwise uncommitted changes plus, on a branch with an open PR, the whole PR diff against its merge base. Never narrow to the latest commit on your own: earlier commits carry tests and code the review must see. Ask if unclear. Confirm non-empty.
 3. **Triage** — follow `references/triage.md`; decide which **specialists** (below) match. Call the Skill tool with `"living-docs"` when agent-config / docs triage matches. Doc drift triage runs on every behavior change.
 4. **Spawn specialists** — every matched specialist runs, in parallel, as a read-only subagent (see Specialists). While they run, **read full files** for the changed areas yourself (diffs alone are not enough).
 4a. **Blast radius** is a specialist: it runs when the diff changes something other code reads by value (a shared type or response shape, how a URL/slug/key is built, a DB schema/migration/backfill, a public API, a config or flag) and proves its one safety fact with the `blast-radius` skill.
