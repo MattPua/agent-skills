@@ -51,7 +51,7 @@ The model may reach for these on its own, and you can also call them by name.
 | [`create-verification-skill`](skills/create-verification-skill/SKILL.md) | Generate project-local `verify-<app>` harness + feature map |
 | [`maintain-verification-skill`](skills/maintain-verification-skill/SKILL.md) | Keep that harness/map honest (source + live pass) |
 | [`unslop`](skills/unslop/SKILL.md) | Remove AI writing patterns and restore human voice in prose |
-| [`teach-me`](skills/teach-me/SKILL.md) | Socratic tutoring to mastery: diagnostic, skill map, spaced review, final assessment |
+| [`teach-me`](skills/teach-me/SKILL.md) | Socratic tutoring to mastery, starting from unread material: show, predict, reveal, skill map, spaced review |
 
 ## User-invoked
 
