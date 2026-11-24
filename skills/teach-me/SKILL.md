@@ -28,8 +28,9 @@ confirmation costs one word.
 ## Session start
 
 1. If the topic is code (a repo, feature, module, flow), read it yourself first:
-   entry points, core data shapes, the main flow, error handling, and tests. Cite
-   `path:line` for every claim after this; read more rather than guess behavior.
+   entry points, core data shapes, the main flow, and error handling. Skip tests:
+   don't read, teach, or quiz on them unless the user asks. Cite `path:line` for
+   every claim after this; read more rather than guess behavior.
 2. Break the topic into 4-10 concrete subskills (fewer for narrow topics), ordered so
    each builds on the earlier ones. For code, each subskill names the files it lives
    in. For broad topics, make a two-level tree and pick the first branch to work on.
@@ -68,7 +69,7 @@ Each subskill runs show, predict, reveal, check:
 2. **Predict.** One question answerable from what is on screen plus earlier subskills
    ("what does this return when `items` is empty?", "which branch runs if X?").
 3. **Reveal.** Confirm or correct, pointing at the exact line or detail. Run it when
-   cheap (a test, a REPL call) and show the real output.
+   cheap (a REPL call or a quick script) and show the real output.
 4. **Check.** One question past the excerpt: connect to an earlier subskill, trace a
    step further, or say where a change would go.
 
