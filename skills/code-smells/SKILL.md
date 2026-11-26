@@ -3,7 +3,7 @@ name: code-smells
 description: "Find code that passes review piece by piece but looks wrong as a whole: repeated moves, reinvented helpers, unnamed concepts, needless layers, type lies, noise, and size out of proportion. Use after finishing a feature or multi-file change, inside a pre-merge review, when the user asks what's sus or over-complicated, or when the user asks you to fix something that was working but badly shaped."
 metadata:
   author: mattpua
-  version: "1.0.8"
+  version: "1.0.9"
 ---
 
 # code-smells
@@ -26,8 +26,8 @@ A smell is code that works and passes a per-line review, but that a careful huma
 | Family | Tell | Question to ask |
 | --- | --- | --- |
 | **Repeated move** | Same few lines or same check in 3+ places within this change; each correct alone (a repeated check on input → Wrong layer) | "Is this X, again, for Y?" → one helper, middleware, table, or shared component |
-| **Reinvented wheel** | New helper, parser, component, type, or flow beside one that already existed before this change, or beside a dependency that does it | "What already does this — in this repo, its packages, its dependencies, or a well-known library?" Search before keeping. A new surface (API, tool, component) calls the existing operation; it doesn't re-do it |
-| **Unnamed concept** | Literals or ad-hoc shapes that mean one domain thing, spread with no list or type; paired fields that always travel together | "What would a person call this?" → one list / type / primitive as the source of truth |
+| **Reinvented wheel** | New helper, parser, component, type, or flow beside one that already existed before this change, or beside a dependency that does it | "What already does this — in this repo, its packages, its dependencies, or a well-known library?" Search before keeping, including the earlier version or sibling of the product being rebuilt and the design system's components. A new surface (API, tool, component) calls the existing operation; it doesn't re-do it |
+| **Unnamed concept** | Literals or ad-hoc shapes that mean one domain thing, spread with no list or type; paired fields that always travel together; names (files, fields, exports) that a rename left behind, that are vaguer than the thing they hold, or that carry a version prefix | "What would a person call this?" → one list / type / primitive as the source of truth |
 | **Needless layer** | New file, export, package, table, column, migration, script, config, flag, env var, or abstraction with one consumer or one use; a switch on something that should just be on | "What breaks if this is folded into its caller or an existing home?" Nothing → fold it |
 | **Theoretical robustness** | Handling, retries, options, or fetches for cases that never could happen at this scale; dynamic lookups for static data; timers, queues, or merge rules that exist only to survive a state a simple rule could prevent | "Will this realistically happen here, and what breaks if we don't handle it?" "Could a rule make this state impossible instead?" |
 | **Type lie** | A type looser than the values that really flow through it: union members, `null`/`undefined`/optional the producer never emits (or both `null` and `undefined` for one absence), `unknown`/`any` where a real type exists. Its symptoms: casts (`as never`, `as unknown as`, `!`), `typeof`/`instanceof` checks and guards on already-typed values | "What does the producer actually send?" → make the type as explicit and slim as that, at the boundary; then delete the guards |

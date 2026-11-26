@@ -24,6 +24,7 @@ Real cases a human caught after the agent's own review passed. Short form: what 
 - A "leave with unsaved changes?" dialog built again when the app already had one.
 - New types whose shape matched an existing type exactly.
 - A hand-made `ids.join(',')` to get value equality in a memoized selector, when the library has an equality option (`resultEqualityCheck`). → Use the option.
+- A new filter helper and time-range picker in a product's v2 rewrite, while the v1 product folder and the design system already had both. → Reuse or move the existing one; check the old product and the design system before writing.
 
 ## Unnamed concept
 
@@ -36,6 +37,9 @@ Real cases a human caught after the agent's own review passed. Short form: what 
 - One column name and enum on two tables after a bulk rename (a `memberType` on both the member and its organization), though the second table's values drive different rules. → A name per table (`organizationType`); after any bulk rename, re-read each hit and check the new name fits there.
 - A padding value set separately per card type. → One shared inset token all cards read.
 - The same optional field added to each sibling type's modal logic. → Put it on their common parent.
+- `widget` renamed to `tile` in components while the data, file names (`DashboardTileGrid`, `widgetDescriptor.ts`) and props still said the old or a vaguer term. → After a rename, grep the old term across file names, fields and exports and rename them all in the same change.
+- `dashboardV2Access`, `.dashboard-v2__section`, and other names carrying a version. → Name it for what it is; the folder already says v2.
+- A prop called `color` that only sets the background. → `backgroundColor`.
 
 ## Needless layer
 
@@ -51,6 +55,8 @@ Real cases a human caught after the agent's own review passed. Short form: what 
 - A new types file (or package export) for types nothing outside the implementation imports. → Keep them unexported beside the code.
 - A feature flag on the safety net (undo) while the risky change it protects shipped to everyone. → Ship them together, or not at all.
 - A security check behind an env var that defaults to off. → Turn it on; delete the switch.
+- One small file per helper, context, hook or loading view (`refreshContext.ts`, `WidgetLoading.tsx`, `dashboardImage.ts`, a controller hook only its one component uses), each with one consumer. → Put it in the file of the code that uses it.
+- A file made `.tsx` only for one small JSX helper, or a spec and its registration split into two files. → One file.
 
 ## Theoretical robustness
 
