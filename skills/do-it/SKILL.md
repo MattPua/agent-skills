@@ -1,10 +1,9 @@
 ---
 name: do-it
-description: "Single entry for rigorous work — pick a playbook and run the leaf skills for you."
-disable-model-invocation: true
+description: "Single entry for rigorous work: picks a playbook (bug fix, feature, investigation, pre-merge, docs lesson, verification harness) and runs the leaf skills. Use for any non-trivial bug fix, feature, investigation, or pre-merge review, even when the user just describes the task without naming a skill. Skip for one-line edits, config tweaks, and quick questions."
 metadata:
   author: mattpua
-  version: "1.3.2"
+  version: "1.4.0"
 ---
 
 # do-it

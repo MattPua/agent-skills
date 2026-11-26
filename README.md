@@ -61,7 +61,7 @@ Reach this by name (slash / picker). The model will not auto-fire it.
 | --- | --- |
 | [`do-it`](skills/do-it/SKILL.md) | Single entry — pick a playbook; leaf skills run as steps |
 
-Default for nontrivial work: **`/do-it`**. It routes bug-fix / feature / investigation / pre-merge / docs / verification-harness / figure-it-out and calls leaf skills for you.
+Default for nontrivial work: **`/do-it`**. The agent also picks it on its own for non-trivial tasks. It routes bug-fix / feature / investigation / pre-merge / docs / verification-harness / figure-it-out and calls leaf skills for you.
 
 ## Project adoption
 
@@ -73,7 +73,7 @@ Default for nontrivial work: **`/do-it`**. It routes bug-fix / feature / investi
 
 ```
 skills/
-  do-it/                        # user — entry / playbooks
+  do-it/                        # model + user — entry / playbooks
   verify-work/                  # model
   living-docs/                  # model
   write-tests/                  # model
